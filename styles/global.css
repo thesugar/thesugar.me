@@ -1,0 +1,40 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: background-color 200ms ease-in 0s;
+}
+
+a:hover {
+    background-color: #d5d6de7a;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+    max-width: 36rem;
+    padding: 0 1rem;
+    margin: 3rem auto 6rem;
+}
+
+.postDate {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    color: #4f4f4f;
+}
