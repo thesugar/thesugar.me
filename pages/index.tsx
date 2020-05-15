@@ -106,17 +106,23 @@ const Home = () => {
 
             <hr />
             <section>
-                {blogItems.map(item => {
+                {blogItems.sort((a, b) => {
+                    if (a.date < b.date) {
+                        return 1
+                    } else {
+                        return -1
+                    }
+                }).map(item => {
                     const articlePath = '/articles' + item.name.slice(1)
                     return (
                         <React.Fragment key={item.title}>
                         <Link href={articlePath}><a className='postTitle'>{item.title}</a></Link>
-                        <span className='postDate'>{item.date}</span>
                         <div className='tags'>
                         {item.tags.map(tag => (
                             <span key={tag} className="btn-flat-dashed-filled">{tag}</span>
                         ))}
                         </div>
+                        <span className='postDate'>{item.date}</span>
                         <hr />
                         </React.Fragment>
                     )}
@@ -142,13 +148,18 @@ const Home = () => {
                         float: right;
                     }
 
+                    .postDate{
+                        float: right;
+                        margin-right: 1rem;
+                    }
+
                     .postTitle{
                         margin-right: 1rem;
                     }
                 `}</style>
             </section>
             <div>
-                {<SocialMedia />}
+                <SocialMedia />
             </div>
         </div>
     )

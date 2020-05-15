@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from './layout.module.css'
+import Markdown from './Markdown'
 
 type Props = {
     children: any
@@ -18,19 +19,19 @@ const Layout = ({ children, meta }: Props) => {
             <title>{meta.title}</title>
         </Head>
         <header>
-            <div>{meta.title}</div>
-            <div>{meta.date}</div>
-            {meta.tags.map((tag, index, tags) => (
-                index === tags.length ? tag : tag + ' '
+            <section className={styles.title}>{meta.title}</section>
+            <div className={styles.postedAt}>{meta.date}</div>
+            {meta.tags.map((tag) => (
+                <span className={styles.tag} key={tag}>{tag}</span>
             ))}
         </header>
 
         <section>
-            {children}
+            <Markdown>{children}</Markdown>
         </section>
 
         <footer>
-            <Link href='/'><a>← Top page</a></Link>
+            <Link href='/'><a className={styles.backToHome}>← Top page</a></Link>
         </footer>
         </div>
     )

@@ -22,4 +22,29 @@
 
 .backToHome {
     margin: 3rem 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+    font-size: 1.5rem;
+    border-bottom: solid 1px black;
+    margin-bottom: 1rem;
+}
+
+.postedAt {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    color: #4f4f4f;
+}
+
+.tag {
+    display: inline-block;
+    margin-right: 0.5rem;
+    text-decoration: none;
+    color: #67c5ff;
+    border: dashed 1px #67c5ff;
+    background: #f2fcff;
+    border-radius: 3px;
+    transition: .1s;
+    font-size: small;
 }
