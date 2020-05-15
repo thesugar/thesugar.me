@@ -17,6 +17,12 @@ const Layout = ({ children, meta }: Props) => {
         <div className={styles.container}>
         <Head>
             <title>{meta.title}</title>
+            <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css"
+            integrity="sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG"
+            crossOrigin="anonymous"
+            />
         </Head>
         <header>
             <section className={styles.title}>{meta.title}</section>
