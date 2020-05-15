@@ -39,3 +39,9 @@ img {
     font-size: medium;
     color: #4f4f4f;
 }
+
+hr {
+    margin: 0.8rem 0rem;
+    border: none;
+    border-bottom: 1px solid #dadada;
+}

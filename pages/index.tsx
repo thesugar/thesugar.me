@@ -2,57 +2,12 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import SocialMedia from '../components/SocialMedia'
-
-const siteTitle = 'THESUGAR.ME'
-
-const importAll = (r: __WebpackModuleApi.RequireContext) => {
-
-    type PostData = { 
-        title: string
-        date : string
-        tags : Array<string>    
-    } & {
-        name: string
-    }
-
-    const posts: PostData[] = []
-
-    r.keys().map((key) => {
-        const meta = r(key).meta ?? {}
-        posts.push({
-          name: key.replace(/\.mdx$/, ''),
-          ...meta,
-        })
-    })
-
-    return posts
-}
+import {siteTitle, selfIntroduction} from '../components/sugar.config'
+import { importAll } from '../components/importAll'
 
 const blogItems = importAll(
     require.context(__dirname + '/articles', true, /\.mdx$/)
 )
-
-const selfIntroduction = 
-    <>
-    <img className='profile' src='./IMG_6128.jpg'></img>
-    <div className='name'>thesugar</div>
-    <div>東大工学部卒→某金融機関のR&D部門の機械学習エンジニア。機械学習、フロントエンド、純粋関数型言語などに興味があります。DL4US、GCIデータサイエンティスト講座修了済。Python / React / Next.js / Haskell</div>
-    <style jsx>{`
-        .profile {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 50px;
-            margin-bottom: 50px;
-            overflow: hidden;
-            height: 200px;
-            position: relative;
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-        }
-        `}
-    </style>
-    </>
 
 const Home = () => {
     return (
