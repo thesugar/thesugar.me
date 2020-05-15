@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import SocialMedia from '../components/SocialMedia'
 
 const siteTitle = 'THESUGAR.ME'
 
@@ -57,7 +58,8 @@ const Home = () => {
     return (
         <div className='container'>
             <Head>
-            <title>{siteTitle}</title>
+                <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
+                <title>{siteTitle}</title>
             </Head>
             <header className='btn-cross'>
                 {siteTitle}
@@ -145,7 +147,9 @@ const Home = () => {
                     }
                 `}</style>
             </section>
-            
+            <div>
+                {<SocialMedia />}
+            </div>
         </div>
     )
 }
