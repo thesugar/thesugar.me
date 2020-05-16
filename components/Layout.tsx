@@ -24,6 +24,7 @@ const Layout = ({ children, meta }: Props) => {
             integrity="sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG"
             crossOrigin="anonymous"
             />
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
         </Head>
         <header> 
             <div className='btn-cross'>

@@ -198,13 +198,11 @@ const Code = ({ children }: Props) => (
     <code>{children}</code>
     <style jsx>{`
       pre {
-        background: #1d1f21;
         color: #f8f8f2;
         white-space: pre;
         overflow: auto;
-        padding: 1.5rem;
-        margin: 40px 0;
-        border-radius: 5px;
+        padding: 0;
+        margin: 0;
         -webkit-overflow-scrolling: touch;
       }
       pre code {
