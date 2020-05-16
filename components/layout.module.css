@@ -1,7 +1,32 @@
-.container {
+.allContainer {
+    display: grid;
+    margin: 0 auto 6rem;
+    grid-template-columns: 17rem 1fr 17rem;
+    grid-template-rows: 100px auto;
+    max-width: 70rem;
+}
+
+.leftNav {
+    margin-left: 50px;
+    grid-column: 1 / 2;
+}
+
+.rightNav {
+    grid-column: 3/ 4;
+}
+
+.thesugar {
+    grid-row: 1 / 2;
+    grid-column: 2/ 3;
     max-width: 36rem;
     padding: 0 1rem;
-    margin: 3rem auto 6rem;
+    margin: 3rem 0rem 0rem;
+}
+
+.container {
+    max-width: 36rem;
+    padding: 3rem 1rem;
+    grid-column: 2 /3;
 }
 
 .header {

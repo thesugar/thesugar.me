@@ -4,6 +4,7 @@ import Link from 'next/link'
 import SocialMedia from '../components/SocialMedia'
 import {siteTitle, selfIntroduction} from '../components/sugar.config'
 import { importAll } from '../components/importAll'
+import THESUGARME from '../components/ThesugarMe'
 
 const blogItems = importAll(
     require.context(__dirname + '/articles', true, /\.mdx$/)
@@ -16,47 +17,10 @@ const Home = () => {
                 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
                 <title>{siteTitle}</title>
             </Head>
-            <header className='btn-cross'>
-                {siteTitle}
-                <style jsx>{`
-                .btn-cross {
-                    display: inline-block;
-                    position: relative;
-                    padding: 0.25em 1em;
-                    border-top: solid 2px black;
-                    border-bottom: solid 2px black;
-                    text-decoration: none;
-                    font-weight: bold;
-                    color: #03A9F4;
-                  }
-                  .btn-cross:before, .btn-cross:after {
-                    content: '';
-                    position: absolute;
-                    top: -7px;
-                    width: 2px;
-                    height: -webkit-calc(100% + 14px);
-                    height: calc(100% + 14px);
-                    background-color: black;
-                    transition: .3s;
-                  }
-                  .btn-cross:before {
-                    left: 7px;
-                  }
-                  .btn-cross:after {
-                    right: 7px;
-                  }
-                  .btn-cross:hover:before {
-                    top: 0px;
-                    left:0;
-                    height: 100%;
-                  }
-                  .btn-cross:hover:after {
-                    top: 0px;
-                    right: 0;
-                    height: 100%;
-                  }
-                `}</style>
+            <header className='header'>
+                {THESUGARME}
             </header>
+            
             {selfIntroduction}
 
             <section>
