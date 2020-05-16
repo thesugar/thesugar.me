@@ -312,6 +312,31 @@ export const LI = ({ children }: Props) => (
 </li>
 )
 
+const TABLE= ( {children } :Props) => (
+    <table>
+        {children}<style jsx>{`
+          table {
+            width: 100%;
+            margin: 30px 0;
+            border: none;
+          }
+        `}</style>
+    </table>
+)
+
+
+const TR = ( { children } :Props) => (
+    <tr>
+        {children}<style jsx>{`          
+        tr {
+            text-align: left;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 24px;
+          }`}</style>
+    </tr>
+)
+
 // UL, OL, LI 指定する場合は以下のオブジェクトに含めること
 const components = {
   a: A,
@@ -322,6 +347,8 @@ const components = {
   h4: H4,
   img: Img,
   hr: Hr,
+  table: TABLE,
+  tr: TR,
   inlineCode: InlineCode
 };
 

@@ -8,7 +8,7 @@ export const selfIntroduction = (
     <>
     <img className='profile' src='./IMG_6128.jpg'></img>
     <div className='name'>{myName}</div>
-    <div>{greet}</div>
+    <div className='introduction'>{greet}</div>
     <style jsx>{`
         .profile {
             display: block;
@@ -21,6 +21,11 @@ export const selfIntroduction = (
             position: relative;
             border-radius: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        }
+
+        .introduction {
+            font-size: medium;
+            margin-bottom: 3rem;
         }
         `}
     </style>

@@ -26,7 +26,7 @@
 }
 
 .title {
-    font-size: 1.5rem;
+    font-size: 2.0rem;
     border-bottom: solid 1px black;
     margin-bottom: 1rem;
 }
@@ -37,14 +37,30 @@
     color: #4f4f4f;
 }
 
+.tags {
+    margin-top: 3.236rem;
+    margin-bottom: 1.618rem;
+}
+
 .tag {
     display: inline-block;
     margin-right: 0.5rem;
+    padding: 0.05rem 0.5rem;
     text-decoration: none;
-    color: #67c5ff;
-    border: dashed 1px #67c5ff;
-    background: #f2fcff;
+    color: #2b2c2c;
+    background: rgba(221, 216, 216, 0.6);
     border-radius: 3px;
-    transition: .1s;
+    font-size: small;
+}
+
+.tag:hover {
+    display: inline-block;
+    margin-right: 0.5rem;
+    padding: 0.05rem 0.5rem;
+    text-decoration: none;
+    color: #2b2c2c;
+    border: dashed 1px #292929;
+    background: rgba(221, 216, 216, 0.2);
+    border-radius: 3px;
     font-size: small;
 }

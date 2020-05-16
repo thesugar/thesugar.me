@@ -1,0 +1,36 @@
+import Layout from '../../components/Layout'
+
+export const meta = {
+    title: '今日やったこととやること',
+    date: '2020-05-17',
+    tags: []
+}
+
+## 今日やったこと
+
+- ✅　シンタックスハイライト
+- ✅　テーブルのスタイリング
+
+## これからやること
+
+- [ ] ツイートで共有するボタン
+- [ ] 拍手・いいねボタン
+- [ ] 目次
+- [ ] カテゴリタグのデザイン
+- [ ] カテゴリタグクリックしたらフィルタ結果出す
+- [ ] 記事の OGP 生成
+- [ ] 何日前に投稿したかの表示
+
+### おためし
+
+<details close>
+<summary>click me</summary>
+
+```python
+def hello():
+    print('hello world')
+```
+
+</details>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

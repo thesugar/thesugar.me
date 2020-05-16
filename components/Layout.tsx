@@ -4,6 +4,7 @@ import Link from 'next/link'
 import styles from './layout.module.css'
 import Markdown from './Markdown'
 import { siteTitle } from './sugar.config'
+import { relative } from './relative'
 
 type Props = {
     children: any
@@ -13,7 +14,11 @@ type Props = {
         tags: Array<string>
     }
 }
+
 const Layout = ({ children, meta }: Props) => {
+
+    const relativeDate = relative(meta.date)
+
     return (
         <div className={styles.container}>
         <Head>
@@ -25,7 +30,9 @@ const Layout = ({ children, meta }: Props) => {
             crossOrigin="anonymous"
             />
             <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+            <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
         </Head>
+        
         <header> 
             <div className='btn-cross'>
                 <Link href='/'><a>{siteTitle}</a></Link>
@@ -77,10 +84,7 @@ const Layout = ({ children, meta }: Props) => {
                   }
                 `}</style>
             <section className={styles.title}>{meta.title}</section>
-            <div className={styles.postedAt}>{meta.date}</div>
-            {meta.tags.map((tag) => (
-                <span className={styles.tag} key={tag}>{tag}</span>
-            ))}
+            <div className={styles.postedAt}>{meta.date}<span>{' '}({relativeDate})</span></div>
         </header>
 
         <section>
@@ -88,6 +92,14 @@ const Layout = ({ children, meta }: Props) => {
         </section>
 
         <footer>
+            <div className={styles.tags}>
+            {meta.tags.map((tag) => (
+                <span className={styles.tag} key={tag}>{tag}</span>
+            ))}
+            </div>
+            <div>
+            <i className="far fa-heart"></i>
+            </div>
             <Link href='/'><a className={styles.backToHome}>← Top page</a></Link>
         </footer>
         </div>

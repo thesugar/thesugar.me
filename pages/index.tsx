@@ -59,8 +59,9 @@ const Home = () => {
             </header>
             {selfIntroduction}
 
-            <hr />
             <section>
+                <div className='writing'>Writings</div>
+                <ul>
                 {blogItems.sort((a, b) => {
                     if (a.date < b.date) {
                         return 1
@@ -70,46 +71,39 @@ const Home = () => {
                 }).map(item => {
                     const articlePath = '/articles' + item.name.slice(1)
                     return (
-                        <React.Fragment key={item.title}>
+                        <li key={item.title}>
                         <Link href={articlePath}><a className='postTitle'>{item.title}</a></Link>
-                        <div className='tags'>
-                        {item.tags.map(tag => (
-                            <span key={tag} className="btn-flat-dashed-filled">{tag}</span>
-                        ))}
-                        </div>
                         <span className='postDate'>{item.date}</span>
-                        <hr />
-                        </React.Fragment>
+                        </li>
                     )}
                 )}
+                </ul>
                 <style jsx>{`
-                    .btn-flat-dashed-filled {
-                        display: inline-block;
-                        margin-right: 0.5rem;
-                        text-decoration: none;
-                        color: #67c5ff;
-                        border: dashed 1px #67c5ff;
-                        background: #f2fcff;
-                        border-radius: 3px;
-                        transition: .1s;
-                        font-size: small;
-                    }
-                    
-                    .btn-flat-dashed-filled:hover {
-                        background: #cbedff;
+                    ul {
+                        padding-left: 0px;
                     }
 
-                    .tags {
-                        float: right;
+                    li {
+                        list-style: none;
+                        text-align: left;
+                    }
+
+                    .writing {
+                        font-size: 1rem;
+                        display: inline-block;
+                        padding: 0px 1.25rem;
+                        border-bottom: solid 1px black;
                     }
 
                     .postDate{
                         float: right;
                         margin-right: 1rem;
+                        font-size: medium;
                     }
 
                     .postTitle{
                         margin-right: 1rem;
+                        font-size: medium;
                     }
                 `}</style>
             </section>
