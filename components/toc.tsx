@@ -12,12 +12,12 @@ type Props = {
 
 const Toc = ({content}: Props) => {
     const contents = content.filter(c => c.props.originalType.startsWith('h') && !c.props.originalType.startsWith('hr'))
-    let toclist: string[] = ['<ul>']
+    let toclist: string[] = ['<ul style="list-style: none; padding-left: 0;">']
     let previousNum = 2
     const result = contents.map((content, index) => {
         const headingNum = parseInt(content.props.originalType.replace('h', ''))
         if (headingNum > previousNum) {
-            toclist.push('<ul>')
+            toclist.push('<ul style="list-style: none; padding-left: 1rem;">')
         }
         if (content.props.children.toString() === '[object Object]' ) {
             toclist.push(`<li>${content.props.children.props.children}</li>`)

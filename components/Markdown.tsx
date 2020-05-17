@@ -1,4 +1,4 @@
-import React, { AnchorHTMLAttributes } from 'react';
+import React, { AnchorHTMLAttributes, ReactChild, ReactChildren } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 
 type Props = {
@@ -337,6 +337,15 @@ const TR = ( { children } :Props) => (
     </tr>
 )
 
+type DetailsProps = {
+  children: ReactChildren
+  close: boolean;
+}
+
+const Details = ({ children, ...props } :DetailsProps) => {
+  return (<details open={!props.close}>{children}</details>)
+}
+
 // UL, OL, LI 指定する場合は以下のオブジェクトに含めること
 const components = {
   a: A,
@@ -349,7 +358,8 @@ const components = {
   hr: Hr,
   table: TABLE,
   tr: TR,
-  inlineCode: InlineCode
+  inlineCode: InlineCode,
+  details: Details
 };
 
 const Markdown = ({ children }: Props) => <MDXProvider components={components}>{children}</MDXProvider>;

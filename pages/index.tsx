@@ -37,7 +37,7 @@ const Home = () => {
                     return (
                         <li key={item.title}>
                         <Link href={articlePath}><a className='postTitle'>{item.title}</a></Link>
-                        <span className='postDate'>{item.date}</span>
+                        <span className='postDate'>{item.date.slice(0, 10)}</span>
                         </li>
                     )}
                 )}
