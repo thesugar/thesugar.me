@@ -1,4 +1,4 @@
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .leftNav {
         visibility: hidden;
     }
@@ -17,7 +17,7 @@
     }
 }
 
-@media screen and (min-width:600px) {
+@media screen and (min-width:768px) {
     /*　for PC　*/
     .allContainer {
         display: grid;
@@ -68,9 +68,12 @@
     height: 8rem;
 }
 
+.like {
+    margin-bottom: 2rem;
+}
+
 .backToHome {
-    margin: 3rem 0 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
 }
 
 .title {

@@ -1,0 +1,20 @@
+import Layout from '../../components/Layout'
+
+export const meta = {
+    title: 'おすすめの動画・ツイート',
+    date: '2020-01-01 23:40',
+    tags: ['YouTube', 'Twitter']
+}
+
+## YouTube
+
+<pre>
+<iframe src="https://www.youtube.com/embed/OzCtS9A81Zc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</pre>
+
+## Twitter
+
+<blockquote class="twitter-tweet" data-partner="tweetdeck"><p lang="ja" dir="ltr">勝手ながら、内容が一新されたNext.jsのチュートリアルを和訳しました。実際にアプリを作りながら最新機能やデプロイまでのフローを学べるかなりお得な内容でした<br /><br />数日前に大幅リニューアルされた Next.js のチュートリアルをやれば、２０２０年のフロントエンドを体感できる <a href="https://t.co/f4BobhyCqc">https://t.co/f4BobhyCqc</a></p>&mdash; thesugar (@_thesugar_) <a href="https://twitter.com/_thesugar_/status/1253259130954895361?ref_src=twsrc%5Etfw">April 23, 2020</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
