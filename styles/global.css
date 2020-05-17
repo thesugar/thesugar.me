@@ -28,10 +28,19 @@ img {
   max-width: 100%;
 }
 
-.container {
+.allContainer {
     max-width: 36rem;
     padding: 0 1rem;
     margin: 3rem auto 6rem;
+}
+
+@media screen and (min-width:600px) {
+  /*　for PC　*/
+  .allContainer {
+    max-width: 50rem;
+    padding: 0 1rem;
+    margin: 3rem auto 6rem;
+}
 }
 
 .postDate {

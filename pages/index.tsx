@@ -12,7 +12,7 @@ const blogItems = importAll(
 
 const Home = () => {
     return (
-        <div className='container'>
+        <div className='allContainer'>
             <Head>
                 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
                 <title>{siteTitle}</title>
@@ -45,7 +45,6 @@ const Home = () => {
                         padding-top: 0.8rem;
                         display: flex;
                         margin: 0 auto;
-                        max-width: 600px;
                         width: 100%;
                         justify-content: space-between;
                       }
@@ -62,7 +61,16 @@ const Home = () => {
                         font-size: medium;
                       }
                       
+                      .writing {
+                        display: inline-block;
+                        margin: 0 auto;
+                        max-width: 600px;
+                        border-bottom: solid 1px black;
+                        padding: 0px 1.25rem;
+                    }
+
                       @media screen and (max-width: 600px) {
+                          /* for mobile */
                         .wrapper {
                           display: block;
                         }
@@ -73,13 +81,6 @@ const Home = () => {
                           margin-bottom: 1.5rem;
                         }
                       }
-
-                    .writing {
-                        font-size: 1rem;
-                        display: inline-block;
-                        padding: 0px 1.25rem;
-                        border-bottom: solid 1px black;
-                    }
 
                 `}</style>
             </section>

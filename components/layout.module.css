@@ -1,32 +1,55 @@
-.allContainer {
-    display: grid;
-    margin: 0 auto 6rem;
-    grid-template-columns: 17rem 1fr 17rem;
-    grid-template-rows: 100px auto;
-    max-width: 70rem;
+@media screen and (max-width: 600px) {
+    .leftNav {
+        visibility: hidden;
+    }
+
+    .rightNav {
+        visibility: hidden;
+    }
+
+    .thesugar {
+        padding: 0 0 0 1rem;
+        margin: 3rem 0rem 0rem 0rem;
+    }
+
+    .container {
+        padding: 0rem 1rem;
+    }
 }
 
-.leftNav {
-    margin-left: 50px;
-    grid-column: 1 / 2;
-}
-
-.rightNav {
-    grid-column: 3/ 4;
-}
-
-.thesugar {
-    grid-row: 1 / 2;
-    grid-column: 2/ 3;
-    max-width: 36rem;
-    padding: 0 1rem;
-    margin: 3rem 0rem 0rem;
-}
-
-.container {
-    max-width: 36rem;
-    padding: 3rem 1rem;
-    grid-column: 2 /3;
+@media screen and (min-width:600px) {
+    /*　for PC　*/
+    .allContainer {
+        display: grid;
+        margin: 0 auto 6rem;
+        grid-template-columns: 10rem 1fr 10rem;
+        grid-template-rows: 100px auto;
+        max-width: 70rem;
+    }
+    
+    .leftNav {
+        margin-left: 50%;
+        grid-column: 1 / 2;
+    }
+    
+    .rightNav {
+        grid-column: 3/ 4;
+    }
+    
+    .thesugar {
+        grid-row: 1 / 2;
+        grid-column: 2/ 3;
+        max-width: 36rem;
+        padding: 0 1rem;
+        margin: 3rem 0rem 0rem;
+    }
+    
+    .container {
+        max-width: 45rem;
+        padding: 3rem 1rem;
+        grid-column: 2 /3;
+    }
+ 
 }
 
 .header {
