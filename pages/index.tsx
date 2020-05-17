@@ -25,7 +25,6 @@ const Home = () => {
 
             <section>
                 <div className='writing'>Writings</div>
-                <ul>
                 {blogItems.sort((a, b) => {
                     if (a.date < b.date) {
                         return 1
@@ -35,22 +34,45 @@ const Home = () => {
                 }).map(item => {
                     const articlePath = '/articles' + item.name.slice(1)
                     return (
-                        <li key={item.title}>
-                        <Link href={articlePath}><a className='postTitle'>{item.title}</a></Link>
-                        <span className='postDate'>{item.date.slice(0, 10)}</span>
-                        </li>
+                        <div key={item.title} className="wrapper">                      
+                            <div className="postTitle"><Link href={articlePath}><a>{item.title}</a></Link></div>
+                            <div className='postDate'>{item.date.slice(0, 10)}</div>
+                        </div>
                     )}
                 )}
-                </ul>
                 <style jsx>{`
-                    ul {
-                        padding-left: 0px;
-                    }
-
-                    li {
-                        list-style: none;
-                        text-align: left;
-                    }
+                    .wrapper {
+                        padding-top: 0.8rem;
+                        display: flex;
+                        margin: 0 auto;
+                        max-width: 600px;
+                        width: 100%;
+                        justify-content: space-between;
+                      }
+                      
+                      .postTitle {
+                        flex: 1 1 auto;
+                        font-size: medium;
+                        text-indent: -1em;
+                        max-width: 80%;
+                      }
+                      
+                      .postDate {
+                        min-width: 10%;
+                        font-size: medium;
+                      }
+                      
+                      @media screen and (max-width: 600px) {
+                        .wrapper {
+                          display: block;
+                        }
+                        
+                        .postDate {
+                          width: 100%;
+                          font-size: medium;
+                          margin-bottom: 1.5rem;
+                        }
+                      }
 
                     .writing {
                         font-size: 1rem;
@@ -59,16 +81,6 @@ const Home = () => {
                         border-bottom: solid 1px black;
                     }
 
-                    .postDate{
-                        float: right;
-                        margin-right: 1rem;
-                        font-size: medium;
-                    }
-
-                    .postTitle{
-                        margin-right: 1rem;
-                        font-size: medium;
-                    }
                 `}</style>
             </section>
             <div>
