@@ -30,6 +30,11 @@
     .leftNav {
         margin-left: 50%;
         grid-column: 1 / 2;
+        display: flex;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 30%;
+        font-size: 1.8rem;
     }
     
     .rightNav {
@@ -49,6 +54,39 @@
         padding: 3rem 1rem;
         grid-column: 2 /3;
     }
+
+    .containerInLeftNav {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .likeOnLeft {
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        text-decoration: none;
+        width: 40px;
+        height: 40px;
+        line-height: 24px;
+        font-size: medium;
+        border-radius: 50%;
+        line-height: 34px;
+        text-align: center;
+        font-weight: bold;
+        box-shadow: inset 0 2px 0px rgba(255, 255, 255, 0.25), inset 0 -2px 0px rgba(0, 0, 0, 0.8);
+        transition: .2s;
+    }
+
+    .heart {
+        background: rgb(205, 205, 200);
+        border: solid 5px rgb(200, 200, 200);
+        opacity: 40%;
+    }
+
+    .heart:hover {
+        box-shadow: none;
+        background: rgb(205, 205, 200);
+      }
  
 }
 
@@ -66,10 +104,6 @@
 .headerHomeImage {
     width: 8rem;
     height: 8rem;
-}
-
-.like {
-    margin-bottom: 2rem;
 }
 
 .backToHome {
@@ -115,3 +149,41 @@
     border-radius: 3px;
     font-size: small;
 }
+
+.footerContainer {
+    display: grid;
+    width: 150px;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 3rem;
+}
+
+.btnSocialCircle {
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #FFF;
+    width: 40px;
+    height: 40px;
+    line-height: 24px;
+    padding: 5px;
+    font-size: small;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: inset 0 2px 0px rgba(255, 255, 255, 0.25), inset 0 -2px 0px rgba(0, 0, 0, 0.18);
+    transition: .2s;
+  }
+  .btnSocialCircle .fab {
+    line-height: 30px;
+  }
+  .btnSocialCircle:hover {
+    box-shadow: none;
+    background-color: #1da1f3;
+  }
+  
+  .twitter {
+    background: #1da1f3;
+    border: solid 5px #1da1f3;
+  }
+  

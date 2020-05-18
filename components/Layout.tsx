@@ -10,6 +10,7 @@ import Toc from './toc'
 type Props = {
     children: any
     meta: {
+        id: string
         title: string
         date: string
         tags: Array<string>
@@ -32,22 +33,21 @@ const Layout = ({ children, meta }: Props) => {
                 />
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
                 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
+                <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
             </Head>
             
             <div className={styles.allContainer}>
             <div className={styles.thesugar}>
                 {THESUGARME}
             </div>
-            <div className={styles.leftNav}><i className='far fa-heart' id='hoge'></i><style jsx>{`
-            div {
-                display: flex;
-                position: -webkit-sticky;
-                position: sticky;
-                top: 30%;
-                font-size: 1.8rem;
-                opacity: 15%;
-            }
-            `}</style></div>
+            <div className={styles.leftNav}>
+                <div className={styles.containerInLeftNav}>
+                    <div className={`${styles.likeOnLeft} ${styles.heart}`}><i className='far fa-heart'></i></div>
+                    <div>
+                    <a className={`${styles.btnSocialCircle} ${styles.twitter}`} href={`https://twitter.com/intent/tweet?text=${meta.title}｜THESUGAR-ME&url=https://thesugar.me/articles/${meta.id}&hashtags=${meta.tags}`} target="_blank"><i className="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
 
             <div className={styles.container}>
             <header> 

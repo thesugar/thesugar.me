@@ -1,6 +1,7 @@
 export const importAll = (r: __WebpackModuleApi.RequireContext) => {
 
     type PostData = { 
+        id: string
         title: string
         date : string
         tags : Array<string>    

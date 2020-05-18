@@ -5,7 +5,6 @@ import SocialMedia from '../components/SocialMedia'
 import {siteTitle, selfIntroduction} from '../components/sugar.config'
 import { importAll } from '../components/importAll'
 import THESUGARME from '../components/ThesugarMe'
-import { read } from 'fs'
 
 const blogItems = importAll(
     require.context(__dirname + '/articles', true, /\.mdx$/)
