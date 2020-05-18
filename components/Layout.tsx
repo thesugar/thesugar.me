@@ -19,8 +19,6 @@ type Props = {
 
 const Layout = ({ children, meta }: Props) => {
 
-    const relativeDate = relative(meta.date)
-
     return (
         <article>
             <Head>
@@ -52,7 +50,7 @@ const Layout = ({ children, meta }: Props) => {
             <div className={styles.container}>
             <header> 
                 <section className={styles.title}>{meta.title}</section>
-                <div className={styles.postedAt}>{meta.date}<span>{' '}({relativeDate})</span></div>
+                <div className={styles.postedAt}>{meta.date}<span>{' '}({relative(meta.date)})</span></div>
             </header>
 
             <main>
