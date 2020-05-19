@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import styles from './layout.module.css'
 import Markdown from './Markdown'
@@ -6,6 +6,7 @@ import { relative } from './relative'
 import THESUGARME from './ThesugarMe'
 import BlogFooter from './BlogFooter'
 import Toc from './toc'
+import LikeButton from '../components/LikeButton'
 
 type Props = {
     children: any
@@ -18,6 +19,8 @@ type Props = {
 }
 
 const Layout = ({ children, meta }: Props) => {
+
+    const [currentLiked, setCurrentLiked] = useState(false)
 
     return (
         <article>
@@ -40,7 +43,7 @@ const Layout = ({ children, meta }: Props) => {
             </div>
             <div className={styles.leftNav}>
                 <div className={styles.containerInLeftNav}>
-                    <div className={`${styles.likeOnLeft} ${styles.heart}`}><i className='far fa-heart'></i></div>
+                    <LikeButton meta={meta} currentLiked={currentLiked} setCurrentLiked={setCurrentLiked}/>
                     <div>
                     <a className={`${styles.btnSocialCircle} ${styles.twitter}`} href={`https://twitter.com/intent/tweet?text=${meta.title}｜THESUGAR-ME&url=https://thesugar.me/articles/${meta.id}&hashtags=${meta.tags}`} target="_blank"><i className="fab fa-twitter"></i></a>
                     </div>
@@ -58,7 +61,7 @@ const Layout = ({ children, meta }: Props) => {
             </main>
 
             <footer>
-                <BlogFooter meta={meta} />
+                <BlogFooter meta={meta} currentLiked={currentLiked} setCurrentLiked={setCurrentLiked}/>
             </footer>
             </div>
 

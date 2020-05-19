@@ -1,0 +1,105 @@
+import Layout from '../../components/Layout'
+
+export const meta = {
+    id: '20200518night',
+    title: '5/18 夜　開発日記',
+    date: '2020-05-18 23:26',
+    tags: ['開発日記']
+}
+
+## 今日やった 3 つのこと
+### 1. 記事の日付の相対表示
+
+記事の日付を相対的に表示するやつは、以下のように場合分けした。
+ややごちゃついているが、考え方自体はシンプル。
+
+```ts
+export const relative = (postedAtDate: string)=> {
+    const now = Date.now()
+    const today = new Date()
+    
+    const postedAtms = new Date(postedAtDate).getTime()
+    const postedAt = new Date(postedAtDate)
+
+    const delta = now - postedAtms
+    const deltaDays = delta / (1000 * 60 * 60 * 24) // ミリ秒 -> 日数
+
+    return (
+        delta < (1000 * 60 * 3) ? "just now"
+        :
+        delta < (1000 * 60 * 60) ? Math.floor(delta / (1000 * 60)).toString() + ' minutes ago'
+        :
+        delta < (1000 * 60 * 60 * 24) ? 
+            Math.floor(delta / (1000 * 60 * 60)) === 1 ? '1 hour ago' : Math.floor(delta / (1000 * 60 * 60)).toString() + ' hours ago'
+        : 
+        (today.getFullYear() !== postedAt.getFullYear()) ? 
+            today.getFullYear() - postedAt.getFullYear() === 1 ? 'last year' : Math.floor(today.getFullYear() - postedAt.getFullYear()).toString() + ' years ago' 
+        :
+        (today.getMonth() !== postedAt.getMonth()) ? 
+            today.getMonth() - postedAt.getMonth() === 1 ? 'last month' : Math.floor(today.getMonth() - postedAt.getMonth()).toString() + ' months ago'
+        :
+        Math.floor(deltaDays) === 1 ? 'yesterday' : Math.floor(deltaDays).toString() + ' days ago'
+    )
+}
+```
+
+### 2. API ルート
+
+いいねボタンの実装は API Route を使うことにした。
+そういえば今まで API Route を書いたことはほとんどなかった気がする。
+
+Next.js でも基本的に express と同じように書ける。
+
+クライアント側で API を叩くときは、`<form method="POST" action="/api/hoge">` などとしなくても、`fetch` でいける。
+
+### 3. いいねボタン
+
+これはまだ実装の途中。  
+ガチでいいねボタンを実装するのなら、ユーザーにはログインさせて ID を割り振るべきだが、今回はそこまでではないので localStorage にいいねしたかしてないかを記事ごとに保存して、  
+そこから読み出していいね済みかどうかを判定し、それ（いいね済みかどうか）に応じていいねボタンの色などを出し分ける。
+
+サーバー側では localStorage を読み出せないので、localStorage を読み出すときは `typeof window !== 'undefined'` と書いて、ウインドウがあること（＝クライアント側であること）を guard する。
+
+「localStorage を見て、それに応じてクライアント側でのみボタンを表示し、サーバー側にはボタンは一切表示しない」、という方針だと、HTML の DOM 構造がサーバーとクライアントで違ってしまうので❌。
+基本的に、書いたコードはサーバー側にもクライアント側にも現れる（`getStaticProps` などを使う場合は別（今回はぜんぜん別の話だけど））ということ、仮想 DOM が何をしているかということを思い出そう。
+
+`useState` を使えばよさそう？
+
+まず、いいねボタンを押したとき用のコールバック関数は以下のようにした。
+ボタンを押すのはブラウザからなので、`localStorage` を気にせずに使える。
+
+```ts
+const handleSubmit = ({meta} : Props) => {
+    fetch('/api/hello', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "id": `${meta.id}`,
+          "currentLikedOrNot" : `${localStorage.getItem(meta.id)}`
+        })
+      })
+    localStorage.setItem(meta.id, "liked")
+}
+```
+
+次に、UI を考える。
+
+```ts
+const BlogFooter = ({meta}: Props) => {
+
+    const initValue = typeof window !== 'undefined' ? localStorage.getItem(meta.id) === 'liked' : false 
+    const [currentLiked, setCurrentLiked] = useState(initValue)
+
+    return (
+    // 省略
+    <div className={styles.footerContainer}>
+        <div className={`${styles.likeOnLeft} ${styles.heart} ${currentLiked}`} onClick={() => { handleSubmit({meta}); setCurrentLiked(!currentLiked)}}>
+            {currentLiked ? "like済み" : "likeしてません"}
+        </div>
+```
+
+こんな感じ（本当は「like済み」とかでなく、ボタンを出し分けたい）でやりたいのだが、`localStorage` はサーバー側には存在しないため、`currentLiked` の初期値がクライアントとサーバーで違いうる。それで、違ってしまうと実際に警告が出るし、よくない。
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
