@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import styles from './layout.module.css'
-import { getStoredValue } from '../lib/localStorage'
 import LikeButton from '../components/LikeButton'
 
 type Props = {

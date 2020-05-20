@@ -1,5 +1,3 @@
-import React, { Reducer } from 'react'
-
 const getStorage = () => {
   if (typeof window !== 'undefined') {
     try {
