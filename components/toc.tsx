@@ -11,7 +11,7 @@ type Props = {
 }
 
 const Toc = ({content}: Props) => {
-    const contents = content.filter(c => c.props.originalType.startsWith('h') && !c.props.originalType.startsWith('hr'))
+    const contents = content.filter(c => typeof c.props !== 'undefined' && typeof c.props.originalType === 'string' && c.props.originalType.startsWith('h') && !c.props.originalType.startsWith('hr'))
     let toclist: string[] = ['<ul style="list-style: none; padding-left: 0;">']
     let previousNum = 2
     const result = contents.map((content, index) => {

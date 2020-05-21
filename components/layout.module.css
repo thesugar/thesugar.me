@@ -67,7 +67,7 @@
 
     .containerInLeftNav {
         display: grid;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
     }
 
     .heart:hover {
@@ -139,7 +139,8 @@
 .footerContainer {
     display: grid;
     width: 150px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 2rem;
     margin-bottom: 3rem;
     justify-items: center;
 }
@@ -172,5 +173,10 @@
   .twitter {
     background: #1da1f3;
     border: solid 5px #1da1f3;
+  }
+
+  .hatena {
+      background: #00a4de;
+      border: solid 5px #00a4de;
   }
   

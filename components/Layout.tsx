@@ -47,6 +47,14 @@ const Layout = ({ children, meta }: Props) => {
                     <div>
                     <a className={`${styles.btnSocialCircle} ${styles.twitter}`} href={`https://twitter.com/intent/tweet?text=${meta.title}｜THESUGAR-ME&url=https://thesugar.me/articles/${meta.id}&hashtags=${meta.tags}`} target="_blank"><i className="fab fa-twitter"></i></a>
                     </div>
+                    <span>
+                    <a className={`${styles.btnSocialCircle} ${styles.hatena}`} href={`https://b.hatena.ne.jp/entry/s/thesugar.me/articles/${meta.id}`} data-hatena-bookmark-layout="touch-counter" title={meta.title}><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charSet="utf-8" async={true}></script>
+                    <style jsx>{`
+                    .${styles.hatena} {
+                        margin-top: 2rem;
+                    }
+                    `}</style>
+                    </span>
                 </div>
             </div>
 
