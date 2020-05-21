@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import styles from './layout.module.css'
 import LikeButton from '../components/LikeButton'
+import { Tags } from '../components/Tags'
 
 type Props = {
     meta: {
@@ -18,12 +19,7 @@ const BlogFooter = ({meta, currentLiked, setCurrentLiked}: Props) => {
 
     return (
     <React.Fragment>
-    <div className={styles.tags}>
-        {meta.tags.map((tag) => (
-            <span className={styles.tag} key={tag}>{tag}</span>
-        ))}
-    </div>
-
+    <Tags tags={meta.tags} />
     <div className={styles.footerContainer}>
         <LikeButton meta={meta} currentLiked={currentLiked} setCurrentLiked={setCurrentLiked} />
         <span>
