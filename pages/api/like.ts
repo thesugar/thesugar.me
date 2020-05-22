@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import fs from 'fs'
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   switch (req.method) {
     case 'POST':
@@ -22,7 +22,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       } 
 
       typeof req.query.id === 'string' ?
-      readLikes(req.query.id)
+      await readLikes(req.query.id)
       .then(json => res.json(json))
       .catch(() => res.json({"likes" : 0}))
       : res.writeHead(400).end()
@@ -72,6 +72,6 @@ const changeLikes = (postId: string, operation: 'increment' | 'decrement') : voi
   })
 }
 
-const readLikes = (postId :string) => {
-  return fs.promises.readFile('src/' + postId + '.json', 'utf8')
+const readLikes = async (postId :string) => {
+  return await fs.promises.readFile('src/' + postId + '.json', 'utf8')
 }

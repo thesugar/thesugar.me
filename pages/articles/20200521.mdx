@@ -1,0 +1,126 @@
+import Layout from '../../components/Layout'
+import { TwitterTweetEmbed } from "react-twitter-embed";
+import Link from 'next/link'
+
+export const meta = {
+    id: '20200521',
+    title: 'ここまでの進捗（0521終了時点）',
+    date: '2020-05-22 0:30',
+    tags: ['開発日記']
+}
+
+## 進捗
+
+- カテゴリタグをクリックしたらそのタグがついた記事一覧を出すようにした
+- Twitter 埋め込みに対応
+- はてブの共有ボタン設置
+
+### カテゴリタグをクリックしたらそのタグがついた記事一覧を出すようにした
+
+処理のロジックは特に難しいこともないが、静的生成（getStaticProps, getStaticPaths）の典型的なユースケースであり楽しい。
+
+`/tag/タグ名` という path を使うが、日本語がパスになるときは `EncodeURI()` で URI エンコードする必要があることは注意。
+
+### Twitter 埋め込み
+
+普通に埋め込みコードを貼り付けると、カードにはならず、ただの引用テキストのようになる。
+
+[Embedded Tweets](https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-javascript-factory-function) を見るかぎり、`widgets.js` を読み込んだうえで以下のように書けばよさそうだけど
+
+```ts
+twttr.widgets.createTweet(
+  '20', // ここは tweet の ID
+  document.getElementById('container'),
+  {
+    theme: 'dark'
+  }
+);
+```
+
+しかしどうもうまくいかなかった。
+
+[chibicode さんのブログ](https://github.com/chibicode/jp/blob/master/src/components/TwitterEmbed.tsx) ではうまく実装できているのでいったんコードをコピーして使ってみたが、ツイートカードは依然として表示されず。。  
+このブログで使っている mdx と相性が悪いのかな？（chibicode さんのブログでは mdx は不使用のはず）
+
+ということで `react-twitter-embed` というライブラリをインストールして使うことにした。あんまり外部ライブラリに頼りたくなかったがやむなし。。  
+（[rauchg.com](https://rauchg.com) でも next-site でもこのライブラリを使っているので、まあいいだろう。。。）
+以下のように書くだけで簡単にツイートを埋め込める。
+
+```ts
+<TwitterTweetEmbed
+  tweetId={'1260649044524728320'}
+/>
+```
+
+<TwitterTweetEmbed
+  tweetId={'1260649044524728320'}
+/>
+
+これだけのために外部ライブラリ使うのもあれなので、書き直したいような気持ちもある。けど当面はこれで。
+
+### YouTube の埋め込みは？
+
+いったんは以下のように書けばいい。width, height は自分で指定する必要あり（指定しないとバランスが崩れる）。
+
+```ts
+<pre>
+<iframe src="https://www.youtube.com/embed/OzCtS9A81Zc" frameBorder="0" width="768" height="474.6" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+{/* frameboarder -> frameBoarder, allowfullscreen -> allowFullScreen に書き換えるようにしないと警告出る */}
+</pre>
+```
+
+### はてブ共有ボタン
+
+これは、はてブ公式が示しているやり方にしたがってリンクボタンを設置しただけ。  
+はてブをやっていないので、これでうまくできているのかよくわからない部分もあるが、まあ不具合があったら直す。
+
+## ここまでにやったこと
+
+- ✅ シンタックスハイライト
+- ✅ テーブルのスタイリング
+- ✅ カテゴリタグのデザイン
+- ✅ 目次（簡単なロジックでしか組んでいないのでバグありそう）
+- ✅ Table of Contents のスタイリング（list-style:none）
+- ✅ Warning: Failed prop type: Link: unknown props found: className in Link を倒した（切り出したコンポーネント内で styled jsx 使ったらこのエラー出た。グローバル CSS の中に書き直した）
+- ✅ markdown で summary 使ったら warning 発生するのに対処
+- ✅ 記事ページのスマホ対応
+- ✅ トップページ、スマホで見たら「記事名　日付」のレイアウト崩れる問題に対応
+- ✅ いいねボタン（UI）
+- ✅ ツイートで共有するボタン
+- ✅ 何日前に投稿したかの表示
+- ✅ いいねボタン（ロジック）
+- ✅ カテゴリタグクリックしたらフィルタ結果出す
+- ✅ マークダウン内でのツイートや YouTube の埋め込み
+- ✅ はてブ共有ボタン
+
+## これからやること
+
+- 記事の OGP 生成
+- コメント機能
+- 閲覧数カウンター
+- ✅ マークダウン内の外部リンク、内部リンクどうなってる？
+- favicon
+- テスト環境整える（Jest 導入）
+- Circle CI 整える
+- 本番運用リハーサル
+
+## リンクの挙動
+ちなみに、上で書いたように、リンクの挙動ってどうなってるっけ？
+
+**外部リンク**
+
+[Google](https://google.com)
+
+**内部リンク**
+
+<a href='/articles/embed'>別の記事へのリンク</a>
+
+**メール**
+
+<a href="mailto:thesugar@thesugar.me">mail</a>
+
+これは `next/link` の `<Link>` コンポーネントを使ってる。  
+// 🛑　5月22日時点メモ：うまく動作しない。
+// ✅　5月22日昼時点メモ：OK。マークダウン内では `<Link>` ではなく `<a>` を使えばよい（`Markdown.tsx` 内で、内部リンクか外部リンクか判断している）。
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

@@ -1,4 +1,5 @@
 import Layout from '../../components/Layout'
+import { TwitterTweetEmbed } from "react-twitter-embed";
 
 export const meta = {
     id: 'embed',
@@ -10,7 +11,7 @@ export const meta = {
 ## YouTube
 
 <pre>
-<iframe src="https://www.youtube.com/embed/OzCtS9A81Zc" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+<iframe src="https://www.youtube.com/embed/OzCtS9A81Zc" frameBorder="0" width="768" height="474.6" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 {/* frameboarder -> frameBoarder, allowfullscreen -> allowFullScreen に書き換えるようにしないと警告出る */}
 </pre>
 
@@ -19,6 +20,8 @@ export const meta = {
 <blockquote class="twitter-tweet" data-partner="tweetdeck"><p lang="ja" dir="ltr">勝手ながら、内容が一新されたNext.jsのチュートリアルを和訳しました。実際にアプリを作りながら最新機能やデプロイまでのフローを学べるかなりお得な内容でした<br /><br />数日前に大幅リニューアルされた Next.js のチュートリアルをやれば、２０２０年のフロントエンドを体感できる <a href="https://t.co/f4BobhyCqc">https://t.co/f4BobhyCqc</a></p>&mdash; thesugar (@_thesugar_) <a href="https://twitter.com/_thesugar_/status/1253259130954895361?ref_src=twsrc%5Etfw">April 23, 2020</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
 
-// ここも　charSet とすること
+<TwitterTweetEmbed
+  tweetId={'340640143058825216'}
+/>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

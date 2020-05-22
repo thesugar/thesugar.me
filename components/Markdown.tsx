@@ -1,21 +1,18 @@
-import React, { AnchorHTMLAttributes, ReactChild, ReactChildren } from 'react';
-import { MDXProvider } from '@mdx-js/react';
+import React, { AnchorHTMLAttributes, ReactChildren } from 'react'
+import { MDXProvider } from '@mdx-js/react'
+import { GenericLink } from './link'
+
+/*
+[reference]
+
+- https://github.com/zeit/next-site/tree/master/components/docs/text
+- https://github.com/zeit/next-site/blob/master/components/docs/documentation.js
+*/
 
 type Props = {
     children: any
     props?: AnchorHTMLAttributes<HTMLAnchorElement>
 }
-
-const A = ({ children, ...props }: Props) => (
-  <a target="_blank" rel="noopener noreferrer" {...props}>
-    {children}
-    <style jsx>{`
-    a {
-        padding: 0.1rem;
-    }
-    `}</style>
-  </a>
-);
 
 const PermalinkIcon = () => (
     <span>
@@ -348,7 +345,7 @@ const Details = ({ children, ...props } :DetailsProps) => {
 
 // UL, OL, LI 指定する場合は以下のオブジェクトに含めること
 const components = {
-  a: A,
+  a: GenericLink,
   blockquote: Blockquote,
   code: Code,
   h2: H2,

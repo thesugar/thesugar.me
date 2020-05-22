@@ -104,7 +104,7 @@
 }
 
 .postedAt {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
     font-size: medium;
     color: #4f4f4f;
 }
@@ -122,6 +122,7 @@
     background: rgba(221, 216, 216, 0.6);
     border-radius: 3px;
     font-size: small;
+    font-family: "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
 }
 
 .tag:hover {

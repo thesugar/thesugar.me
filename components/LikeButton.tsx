@@ -40,19 +40,29 @@ const handleSubmit = (meta: Meta) => {
 
 const getLike = async (id :string) => {
     const res = await fetch(`/api/like?id=${id}`)
-    return res.json()
+    return await res.json()
 }
 
 const LikeButton = ({meta, currentLiked, setCurrentLiked} :Props) => {
 
     const [like, setLike] = useState(0)
 
+    /*
     useEffect(() => {
         new Promise((resolve, reject) => {
             resolve(getLike(meta.id))
         }).then(value => {
             setLike(JSON.parse(JSON.stringify(value)).likes)
         })
+    }, [like, currentLiked])
+    */
+
+    useEffect(() => {
+        const func = async () => {
+            const value = await getLike(meta.id)
+            setLike(JSON.parse(JSON.stringify(value)).likes)
+        }
+        func()
     }, [like, currentLiked])
 
     useEffect(() => {
