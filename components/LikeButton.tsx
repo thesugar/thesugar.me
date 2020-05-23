@@ -47,16 +47,6 @@ const LikeButton = ({meta, currentLiked, setCurrentLiked} :Props) => {
 
     const [like, setLike] = useState(0)
 
-    /*
-    useEffect(() => {
-        new Promise((resolve, reject) => {
-            resolve(getLike(meta.id))
-        }).then(value => {
-            setLike(JSON.parse(JSON.stringify(value)).likes)
-        })
-    }, [like, currentLiked])
-    */
-
     useEffect(() => {
         const func = async () => {
             const value = await getLike(meta.id)

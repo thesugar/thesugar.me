@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import styles from './layout.module.css'
 import Markdown from './Markdown'
@@ -18,9 +18,43 @@ type Props = {
     }
 }
 
+const kickViewedCounter = async (id: string) => {
+    await fetch('/api/counter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "id": `${id}`,
+        })
+      })
+}
+
+const getViews = async (id :string) => {
+    const res = await fetch(`/api/counter?id=${id}`)
+    return await res.json()
+}
+
 const Layout = ({ children, meta }: Props) => {
 
     const [currentLiked, setCurrentLiked] = useState(false)
+
+    const [views, setViews] = useState(0)
+
+    useEffect(() => {
+        const func = async () => {
+            const value = await getViews(meta.id)
+            setViews(JSON.parse(JSON.stringify(value)).views)
+        }
+        func()
+    }, [])
+
+    useEffect(() => {
+        const kick = async () => {
+            await kickViewedCounter(meta.id)
+        }
+        kick()
+    }, [])
 
     return (
         <article>
@@ -33,8 +67,10 @@ const Layout = ({ children, meta }: Props) => {
                 crossOrigin="anonymous"
                 />
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
-                <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
-                <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+                <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" 
+                crossOrigin="anonymous"/>
+                <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"
+                crossOrigin="anonymous"></script>
             </Head>
             
             <div className={styles.allContainer}>
@@ -61,7 +97,10 @@ const Layout = ({ children, meta }: Props) => {
             <div className={styles.container}>
             <header> 
                 <section className={styles.title}>{meta.title}</section>
+                <div className={styles.underTitle_container}>
                 <div className={styles.postedAt}>{meta.date}<span>{' '}({relative(meta.date)})</span></div>
+                <div className={styles.views}>{views} views</div>
+                </div>
             </header>
 
             <main>

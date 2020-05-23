@@ -97,6 +97,11 @@
     font-family: "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
 }
 
+.underTitle_container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .title {
     font-size: 2.0rem;
     border-bottom: solid 1px black;
@@ -107,6 +112,13 @@
     font-family: "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
     font-size: medium;
     color: #4f4f4f;
+}
+
+.views {
+    font-family: "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+    font-size: medium;
+    color: #4f4f4f;
+    font-style: italic;
 }
 
 .tags {

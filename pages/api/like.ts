@@ -43,28 +43,35 @@ const changeLikes = (postId: string, operation: 'increment' | 'decrement') : voi
       // 一度も like されておらず、like 数をカウントする JSON ファイルがない場合のエラーを想定
       switch (operation) {
         case 'increment':
-          fs.writeFile('src/' + postId + '.json', `{"likes": ${1}}`, () => {
+          fs.writeFile('src/' + postId + '.json', `{"likes": ${1}, "views": ${0}}`, () => {
             // do nothing
           })
           break
         case 'decrement':
           // 一度も like していないのに decrement できないから、この処理が走ることはないはず
-          fs.writeFile('src/' + postId + '.json', `{"likes": ${0}}`, () => {
+          fs.writeFile('src/' + postId + '.json', `{"likes": ${0}, "views": ${0}}`, () => {
             // do nothing
           })
           break
       }
       return null
     }
-    const likes = parseInt(JSON.parse(data).likes)
+
+    // ファイルが存在する場合（少なくとも一度は like されている / view されている）
+    // 逆に、like か view のどちらかは 0 の可能性あり
+    const json = JSON.parse(data || "null")
+    const likes = parseInt(json.likes) > 0 ? parseInt(json.likes) : 0
+    const views = parseInt(json.views) > 0 ? parseInt(json.views) : 0
+    const comments = json.comments ? json.comments : []
+
     switch (operation) {
       case 'increment':
-        fs.writeFile('src/' + postId + '.json', `{"likes": ${likes+1}}`, () => {
+        fs.writeFile('src/' + postId + '.json', `{"likes": ${likes+1}, "views": ${views}, "comments": ${JSON.stringify(comments)}}`, () => {
           // do nothing
         })
         break
       case 'decrement':
-        fs.writeFile('src/' + postId + '.json', `{"likes": ${likes-1}}`, () => {
+        fs.writeFile('src/' + postId + '.json', `{"likes": ${likes-1}, "views": ${views}, "comments": ${JSON.stringify(comments)}}`, () => {
           // do nothing
         })
         break
