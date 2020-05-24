@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styles from './layout.module.css'
 import LikeButton from '../components/LikeButton'
 import { Tags } from '../components/Tags'
+import { Comments } from '../components/Comments'
 
 type Props = {
     meta: {
@@ -29,6 +30,8 @@ const BlogFooter = ({meta, currentLiked, setCurrentLiked}: Props) => {
         <a className={`${styles.btnSocialCircle} ${styles.hatena}`} href={`https://b.hatena.ne.jp/entry/s/thesugar.me/articles/${meta.id}`} data-hatena-bookmark-layout="touch-counter" title={meta.title}><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charSet="utf-8" async={true}></script>
         </span>
     </div>
+
+    <Comments id={meta.id} />
 
     <Link href='/'>
         <a className={styles.backToHome}>← Top page</a>
