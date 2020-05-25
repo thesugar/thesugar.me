@@ -33,7 +33,6 @@ const Tag = ({articles, tag} : { articles : PostData[]; tag: string}) => (
         <style jsx>{`
         a {
             padding: 0;
-            color: inherit;
         }
 
         a:hover {
