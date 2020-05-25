@@ -31,8 +31,14 @@ const kickViewedCounter = async (id: string) => {
 }
 
 const getViews = async (id :string) => {
-    const res = await fetch(`/api/counter?id=${id}`)
-    return await res.json()
+    while (true) {
+        try {
+            const res = await fetch(`/api/counter?id=${id}`)
+            return await res.json()
+        } catch (err) {
+            continue
+        }
+    }
 }
 
 const Layout = ({ children, meta }: Props) => {

@@ -39,8 +39,14 @@ const handleSubmit = (meta: Meta) => {
 }
 
 const getLike = async (id :string) => {
-    const res = await fetch(`/api/like?id=${id}`)
-    return await res.json()
+    while (true) {
+        try {
+            const res = await fetch(`/api/like?id=${id}`)
+            return await res.json()
+        } catch (err) {
+            continue
+        }
+    }
 }
 
 const LikeButton = ({meta, currentLiked, setCurrentLiked} :Props) => {
@@ -60,9 +66,8 @@ const LikeButton = ({meta, currentLiked, setCurrentLiked} :Props) => {
             setCurrentLiked(JSON.parse(getStoredValue(meta.id) as string)['liked'])
         } catch (err) {
             setCurrentLiked(false)
-        } 
-        //document.getElementsByClassName("likeButton")[0].innerHTML = getStoredValue(meta.id) === 'liked' ? "<i class='fas fa-heart'></i>" : "<i class='far fa-heart'></i>"
-    },[]/* [currentLiked]*/)
+        }
+    },[])
 
     return (
         <div className='likeArea'>

@@ -39,8 +39,14 @@ const handleSubmit = (
   
   
 const getComments = async (id :string) => {
-    const res = await fetch(`/api/comment?id=${id}`)
-    return await res.json()
+    while (true) {
+        try {
+            const res = await fetch(`/api/comment?id=${id}`)
+            return await res.json()
+        } catch (err) {
+            continue
+        }
+    }
 }
 
 export const Comments = ({id} : {id: string}) => {
