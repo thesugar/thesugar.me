@@ -56,17 +56,35 @@ const Layout = ({ children, meta }: Props) => {
         kick()
     }, [])
 
+    let previewText = ''
+    children.map((child: {props: any})=> {
+        if (child.props && child.props.children !== undefined && typeof child.props.children === 'string') {
+            previewText += child.props.children + ' '
+        } else if (child.props.children && child.props.children.props && typeof child.props.children.props.children === 'string') {
+            previewText += child.props.children.props.children + ' '
+        }
+    })
+    
     return (
         <article>
             <Head>
                 <title>{meta.title}</title>
+                <meta name="description" content={`${previewText}`}></meta>
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={`https://thesugar.me/articles/${meta.id}`} /> 
+                <meta property="og:title" content={`${meta.title}`} /> 
+                <meta property="og:image" content={`https://thesugar.me/ogp/${meta.id}.jpg`} /> 
+                <meta property="og:description" content={`${previewText}`} /> 
+                <meta name="twitter:card" content="summary_large_image" /> 
+                <meta name="twitter:site" content="@_thesugar_" /> 
                 <link
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css"
                 integrity="sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG"
                 crossOrigin="anonymous"
                 />
-                <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/themes/prism-tomorrow.min.css" rel="stylesheet"
+                crossOrigin="anonyumous" />
                 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" 
                 crossOrigin="anonymous"/>
                 <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"

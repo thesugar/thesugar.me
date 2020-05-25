@@ -13,12 +13,14 @@
     "@mdx-js/mdx": "^1.6.1",
     "@mdx-js/tag": "^0.20.3",
     "@next/mdx": "^9.4.0",
+    "canvas": "^2.6.1",
     "next": "9.4.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-twitter-embed": "^3.0.3",
     "rehype-katex": "^3.0.0",
-    "remark-math": "^2.0.1"
+    "remark-math": "^2.0.1",
+    "urlsafe-base64": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^14.0.1",
