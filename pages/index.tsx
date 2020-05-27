@@ -18,7 +18,6 @@ const Home = () => {
     return (
         <div className='allContainer'>
             <Head>
-                <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" crossOrigin="anonymous"/>
                 <title>{siteTitle}</title>
             </Head>
             <header className='header'>

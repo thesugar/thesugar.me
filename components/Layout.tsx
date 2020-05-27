@@ -7,6 +7,8 @@ import THESUGARME from './ThesugarMe'
 import BlogFooter from './BlogFooter'
 import Toc from './toc'
 import LikeButton from '../components/LikeButton'
+import Twitter from '../components/icons/twitter'
+import Hatena from '../components/icons/hatena'
 
 type Props = {
     children: any
@@ -91,8 +93,6 @@ const Layout = ({ children, meta }: Props) => {
                 />
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/themes/prism-tomorrow.min.css" rel="stylesheet"
                 crossOrigin="anonyumous" />
-                <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" 
-                crossOrigin="anonymous"/>
                 <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"
                 crossOrigin="anonymous"></script>
             </Head>
@@ -105,10 +105,10 @@ const Layout = ({ children, meta }: Props) => {
                 <div className={styles.containerInLeftNav}>
                     <LikeButton meta={meta} currentLiked={currentLiked} setCurrentLiked={setCurrentLiked}/>
                     <div>
-                    <a className={`${styles.btnSocialCircle} ${styles.twitter}`} href={`https://twitter.com/intent/tweet?text=${meta.title}｜THESUGAR-ME&url=https://thesugar.me/articles/${meta.id}&hashtags=${meta.tags}`} target="_blank"><i className="fab fa-twitter"></i></a>
+                    <a className={`${styles.btnSocialCircle} ${styles.twitter}`} href={`https://twitter.com/intent/tweet?text=${meta.title}｜THESUGAR-ME&url=https://thesugar.me/articles/${meta.id}&hashtags=${meta.tags}`} target="_blank"><Twitter /></a>
                     </div>
                     <span>
-                    <a className={`${styles.btnSocialCircle} ${styles.hatena}`} href={`https://b.hatena.ne.jp/entry/s/thesugar.me/articles/${meta.id}`} data-hatena-bookmark-layout="touch-counter" title={meta.title}><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charSet="utf-8" async={true}></script>
+                    <a className={`${styles.btnSocialCircle} ${styles.hatena}`} href={`https://b.hatena.ne.jp/entry/s/thesugar.me/articles/${meta.id}`} data-hatena-bookmark-layout="touch-counter" title={meta.title}><Hatena /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charSet="utf-8" async={true}></script>
                     <style jsx>{`
                     .${styles.hatena} {
                         margin-top: 2rem;

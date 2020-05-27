@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getStoredValue } from '../lib/localStorage'
+import Heart from '../components/icons/heart'
+import FasHeart from '../components/icons/fasHeart'
 
 type Meta = {
     id: string;
@@ -72,7 +74,7 @@ const LikeButton = ({meta, currentLiked, setCurrentLiked} :Props) => {
     return (
         <div className='likeArea'>
         <div className={`heartMark-${currentLiked}`} onClick={() => { handleSubmit(meta); setCurrentLiked(!currentLiked)}}>
-            {currentLiked ? <i className='fas fa-heart'></i> : <i className='far fa-heart'></i>}
+            {currentLiked ? <FasHeart/> : <Heart />}
         </div>
         <span className='howManyLikes'>{like}</span><style jsx>{`
         .likeArea {

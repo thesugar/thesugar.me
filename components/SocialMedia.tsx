@@ -1,4 +1,6 @@
 import React from 'react'
+import Twitter from '../components/icons/twitter'
+import Github from '../components/icons/github'
 
 type Media = {
     name: 'Mail' | 'Twitter' | 'GitHub' | 'Qiita' | 'facebook';
@@ -6,8 +8,8 @@ type Media = {
 }
 
 const mediaList = [
-    {name: 'Twitter', url: 'https://twitter.com/_thesugar_'},
-    {name: 'GitHub', url: 'https://github.com/thesugar'}]
+    {name: 'Twitter', url: 'https://twitter.com/_thesugar_', icon: <Twitter />},
+    {name: 'GitHub', url: 'https://github.com/thesugar', icon: <Github />}]
 
 type Props = {
     mediaList: Array<Media>
@@ -16,14 +18,14 @@ type Props = {
 const SocialMedia = () => {
   return (
     <div>
-      {mediaList.map((media) => (
+      {mediaList.map((media, index) => (
         <a
           key={media.name}
           href={media.url}
           className={`btn-social-icon-${media.name.toLowerCase()}`}
           target="_blank"
         >
-          <i className={`fab fa-${media.name.toLowerCase()}`}></i>
+          {media.icon}
         </a>
       ))}
       <a key='qiita' href='https://qiita.com/thesugar' className='qiita' target='_blank'>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PaperPlane from '../components/icons/paperPlane'
 
 const handleSubmit = (
     id: string,
@@ -75,7 +76,7 @@ export const Comments = ({id} : {id: string}) => {
         <div className='commentContainer'>
         <input type="text" className="nameArea" placeholder="お名前" value={name} onChange={(e) => setName(e.target.value)}></input>
         <input type="text" placeholder="コメントする" value={comment} onChange={(e) => setComment(e.target.value)}></input>
-        <button onClick={() => handleSubmit(id, name, comment, setName, setComment, setShouldFetch, setErrMsg)}><i className="fas fa-paper-plane"></i></button>
+        <button onClick={() => handleSubmit(id, name, comment, setName, setComment, setShouldFetch, setErrMsg)}><PaperPlane /></button>
         </div>
         <div className="errorMessage">{errMsg}</div>
         <div className="undermargin" />
