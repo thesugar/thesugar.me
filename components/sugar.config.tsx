@@ -6,7 +6,7 @@ const greet = <>東大工学部卒→某金融機関のR&D部門の機械学習�
 
 export const selfIntroduction = (
     <>
-    <img className='profile' src='./IMG_6128.jpg'></img>
+    <img className='profile' src='./profile.jpg'></img>
     <div className='name'>{myName}</div>
     <div className='introduction'>{greet}</div>
     <style jsx>{`
