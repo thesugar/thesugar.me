@@ -24,11 +24,12 @@ const SocialMedia = () => {
           href={media.url}
           className={`btn-social-icon-${media.name.toLowerCase()}`}
           target="_blank"
+          rel="noopener noreferrer"
         >
           {media.icon}
         </a>
       ))}
-      <a key='qiita' href='https://qiita.com/thesugar' className='qiita' target='_blank'>
+      <a key='qiita' href='https://qiita.com/thesugar' className='qiita' target='_blank' rel="noopener noreferrer">
       <img src="logo-background-color.png" alt="qiita" className='qiitalogo' />
       </a>
       <style jsx>{`

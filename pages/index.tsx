@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import SocialMedia from '../components/SocialMedia'
-import {siteTitle, selfIntroduction} from '../components/sugar.config'
+import {siteTitle, selfIntroduction, siteDescription, siteOgDescription} from '../components/sugar.config'
 import { importAll } from '../components/importAll'
 import THESUGARME from '../components/ThesugarMe'
 
@@ -19,6 +19,14 @@ const Home = () => {
         <div className='allContainer'>
             <Head>
                 <title>{siteTitle}</title>
+                <meta name="description" content={`${siteDescription}`}></meta>
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={`https://thesugar.me/`} /> 
+                <meta property="og:title" content={`${siteTitle}`} /> 
+                <meta property="og:image" content={`https://thesugar.me/ogp/thesugar_ogp.png`} /> 
+                <meta property="og:description" content={`${siteOgDescription}`} /> 
+                <meta name="twitter:card" content="summary_large_image" /> 
+                <meta name="twitter:site" content="@_thesugar_" /> 
             </Head>
             <header className='header'>
                 {THESUGARME}
