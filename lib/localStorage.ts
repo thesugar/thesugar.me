@@ -9,16 +9,16 @@ const getStorage = () => {
   return {
     getItem: () => {},
     setItem: () => {},
-    removeItem: () => {}
+    removeItem: () => {},
   }
 }
 
 const storage = getStorage()
 
-export const getStoredValue = (key: string) => {
+export const getStoredValue = (key: string): string | void | null => {
   try {
-    return storage.getItem(key);
+    return storage.getItem(key)
   } catch (e) {
     // Ignore invalid JSON from localStorage
   }
-};
+}

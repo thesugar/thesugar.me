@@ -3,22 +3,23 @@ import Twitter from '../components/icons/twitter'
 import Github from '../components/icons/github'
 
 type Media = {
-    name: 'Mail' | 'Twitter' | 'GitHub' | 'Qiita' | 'facebook';
-    url: string;
+  name: 'Mail' | 'Twitter' | 'GitHub' | 'Qiita' | 'facebook'
+  url: string
 }
 
 const mediaList = [
-    {name: 'Twitter', url: 'https://twitter.com/_thesugar_', icon: <Twitter />},
-    {name: 'GitHub', url: 'https://github.com/thesugar', icon: <Github />}]
+  { name: 'Twitter', url: 'https://twitter.com/_thesugar_', icon: <Twitter /> },
+  { name: 'GitHub', url: 'https://github.com/thesugar', icon: <Github /> },
+]
 
 type Props = {
-    mediaList: Array<Media>
+  mediaList: Array<Media>
 }
 
-const SocialMedia = () => {
+const SocialMedia = (): JSX.Element => {
   return (
     <div>
-      {mediaList.map((media, index) => (
+      {mediaList.map((media) => (
         <a
           key={media.name}
           href={media.url}
@@ -29,15 +30,25 @@ const SocialMedia = () => {
           {media.icon}
         </a>
       ))}
-      <a key='qiita' href='https://qiita.com/thesugar' className='qiita' target='_blank' rel="noopener noreferrer">
-      <img src="logo-background-color.png" alt="qiita" className='qiitalogo' />
+      <a
+        key="qiita"
+        href="https://qiita.com/thesugar"
+        className="qiita"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="logo-background-color.png"
+          alt="qiita"
+          className="qiitalogo"
+        />
       </a>
       <style jsx>{`
         div {
-            padding: 2.5% 0;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
+          padding: 2.5% 0;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
         }
 
         .btn-social-icon-twitter {
@@ -75,7 +86,7 @@ const SocialMedia = () => {
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
 export default SocialMedia

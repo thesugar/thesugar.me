@@ -1,23 +1,36 @@
-import NativeLink from 'next/link';
+import React from 'react'
+import NativeLink from 'next/link'
 
-export const GenericLink = (props: any) => {
-  if (props.href !== undefined && props.href.startsWith('/') && !props.href.startsWith('/docs')) {
-    return <InternalLink {...props} />;
+export const GenericLink = (props: any): JSX.Element => {
+  if (
+    props.href !== undefined &&
+    props.href.startsWith('/') &&
+    !props.href.startsWith('/docs')
+  ) {
+    return <InternalLink {...props} />
   }
 
-  if (props.href !== undefined && props.href.includes('@') || props.href !== undefined && props.href.startsWith('#')) {
-    return <AnchorLink {...props} />;
+  if (
+    (props.href !== undefined && props.href.includes('@')) ||
+    (props.href !== undefined && props.href.startsWith('#'))
+  ) {
+    return <AnchorLink {...props} />
   }
 
-  return <ExternalLink {...props} />;
-};
+  return <ExternalLink {...props} />
+}
 
-export const InternalLink = ({ href, as, children, error = false }: {
-    href: string
-    as: string
-    children: any
-    error?: boolean | undefined
-}) => (
+export const InternalLink = ({
+  href,
+  as,
+  children,
+  error = false,
+}: {
+  href: string
+  as: string
+  children: any
+  error?: boolean | undefined
+}): JSX.Element => (
   <NativeLink href={href} as={as}>
     <a>
       {children}
@@ -35,13 +48,17 @@ export const InternalLink = ({ href, as, children, error = false }: {
       `}</style>
     </a>
   </NativeLink>
-);
+)
 
-export const AnchorLink = ({ href, onClick, children }: {
-    href: string
-    onClick: any
-    children: any
-}) => (
+export const AnchorLink = ({
+  href,
+  onClick,
+  children,
+}: {
+  href: string
+  onClick: any
+  children: any
+}): JSX.Element => (
   <a href={href} onClick={onClick}>
     {children}
 
@@ -61,12 +78,15 @@ export const AnchorLink = ({ href, onClick, children }: {
       `}
     </style>
   </a>
-);
+)
 
-export const ExternalLink = ({ href, children }: {
-    href: string
-    children: any
-}) => (
+export const ExternalLink = ({
+  href,
+  children,
+}: {
+  href: string
+  children: any
+}): JSX.Element => (
   <a href={href} target="_blank" rel="noopener noreferrer">
     {children}
 
@@ -80,4 +100,4 @@ export const ExternalLink = ({ href, children }: {
       `}
     </style>
   </a>
-);
+)

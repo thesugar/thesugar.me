@@ -10,69 +10,74 @@ import { GenericLink } from './link'
 */
 
 type Props = {
-    children: any
-    props?: AnchorHTMLAttributes<HTMLAnchorElement>
+  children: any
+  props?: AnchorHTMLAttributes<HTMLAnchorElement>
 }
 
 const PermalinkIcon = () => (
-    <span>
-      <svg viewBox="0 0 16 16" width="16" height="16">
-        <g strokeWidth="1" fill="#000000" stroke="#000000">
-          <path
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeMiterlimit="10"
-            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-          />
-          <path
-            fill="none"
-            stroke="#000000"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeMiterlimit="10"
-            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-          />
-        </g>
-      </svg>
-    </span>
-  );
+  <span>
+    <svg viewBox="0 0 16 16" width="16" height="16">
+      <g strokeWidth="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeMiterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        />
+        <path
+          fill="none"
+          stroke="#000000"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeMiterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        />
+      </g>
+    </svg>
+  </span>
+)
 
-const HeadingA = ({ children,...props }: Props) => {
-    const id = children.toString() === '[object Object]' ? children.props.children: children
+const HeadingA = ({ children }: Props) => {
+  const id =
+    children.toString() === '[object Object]'
+      ? children.props.children
+      : children
 
-    return (
-    <span className='heading'>
+  return (
+    <span className="heading">
       {children}
-      <span className='permalink'>
-          <a href={`#${id}`}><PermalinkIcon /></a>
-          </span>
+      <span className="permalink">
+        <a href={`#${id}`}>
+          <PermalinkIcon />
+        </a>
+      </span>
       <style jsx>{`
-      .heading {
+        .heading {
           padding: 0.1rem;
           color: black;
           transition: none;
-      }
+        }
 
-      .heading:hover {
+        .heading:hover {
           background-color: none;
           border-bottom: dashed 1px;
-      }
+        }
 
-      .permalink {
-        display: none;
-      }
+        .permalink {
+          display: none;
+        }
 
-      .heading:hover .permalink {
-        display: inline;
-      }
+        .heading:hover .permalink {
+          display: inline;
+        }
 
-      a:hover {
+        a:hover {
           background-color: inherit;
-      }
+        }
       `}</style>
     </span>
-);
+  )
 }
 
 /*
@@ -96,53 +101,68 @@ var replacer = function(key: string, value: string) {
 ```
 */
 
-export const H2 = ({ children }: Props) => {
-    const id = children.toString() === '[object Object]' ? children.props.children: children
+export const H2 = ({ children }: Props): JSX.Element => {
+  const id =
+    children.toString() === '[object Object]'
+      ? children.props.children
+      : children
 
-    return (
-  <h2 id={`${id}`}>
-    <HeadingA>{children}</HeadingA>
-    <style jsx>{`
-      h2 {
-        margin-top: 2rem;
-        font-size: 1.25rem;
-        font-family: Tahoma, 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
-      }
-    `}</style>
-  </h2>
-);
+  return (
+    <h2 id={`${id}`}>
+      <HeadingA>{children}</HeadingA>
+      <style jsx>{`
+        h2 {
+          margin-top: 2rem;
+          font-size: 1.25rem;
+          font-family: Tahoma, 游ゴシック体, 'Yu Gothic', YuGothic,
+            'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ,
+            Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+        }
+      `}</style>
+    </h2>
+  )
 }
 
-const H3 = ({ children }: Props) => {
-    const id = children.toString() === '[object Object]' ? children.props.children: children
-    return (
-  <h3 id={`${id}`}>
-    <HeadingA>{children}</HeadingA>
-    <style jsx>{`
-      h3 {
-        margin-top: 2rem;
-        font-size: 1.125rem;
-        font-family: Tahoma, 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
-      }
-    `}</style>
-  </h3>
-);
+const H3 = ({ children }: Props): JSX.Element => {
+  const id =
+    children.toString() === '[object Object]'
+      ? children.props.children
+      : children
+  return (
+    <h3 id={`${id}`}>
+      <HeadingA>{children}</HeadingA>
+      <style jsx>{`
+        h3 {
+          margin-top: 2rem;
+          font-size: 1.125rem;
+          font-family: Tahoma, 游ゴシック体, 'Yu Gothic', YuGothic,
+            'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ,
+            Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+        }
+      `}</style>
+    </h3>
+  )
 }
 
-const H4 = ({ children }: Props) => {
-    const id = children.toString() === '[object Object]' ? children.props.children: children
-    return (
-  <h4 id={`${id}`}>
-    <HeadingA>{children}</HeadingA>
+const H4 = ({ children }: Props): JSX.Element => {
+  const id =
+    children.toString() === '[object Object]'
+      ? children.props.children
+      : children
+  return (
+    <h4 id={`${id}`}>
+      <HeadingA>{children}</HeadingA>
       <style jsx>{`
         h4 {
           margin-top: 2rem;
           font-size: 1.075rem;
-          font-family: Tahoma, 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+          font-family: Tahoma, 游ゴシック体, 'Yu Gothic', YuGothic,
+            'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ,
+            Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
         }
       `}</style>
-  </h4>
-  );
+    </h4>
+  )
 }
 
 const Hr = () => (
@@ -156,9 +176,9 @@ const Hr = () => (
       }
     `}</style>
   </>
-);
+)
 
-const Img = ({ ...props }) => (
+const Img = ({ ...props }: { [x: string]: any; alt?: string }): JSX.Element => (
   <>
     <img {...props} alt={props.alt || ''} />
     <style jsx>{`
@@ -167,9 +187,9 @@ const Img = ({ ...props }) => (
       }
     `}</style>
   </>
-);
+)
 
-const Blockquote = ({ children }: Props) => (
+const Blockquote = ({ children }: Props): JSX.Element => (
   <blockquote>
     {children}
     <style jsx>{`
@@ -188,9 +208,9 @@ const Blockquote = ({ children }: Props) => (
       }
     `}</style>
   </blockquote>
-);
+)
 
-const Code = ({ children }: Props) => (
+const Code = ({ children }: Props): JSX.Element => (
   <pre>
     <code>{children}</code>
     <style jsx>{`
@@ -204,7 +224,7 @@ const Code = ({ children }: Props) => (
       }
       pre code {
         padding: 0;
-        font-family: "Lucida Console", Monaco, monospace;
+        font-family: 'Lucida Console', Monaco, monospace;
         border-radius: 0;
       }
       pre code::before {
@@ -225,15 +245,16 @@ const Code = ({ children }: Props) => (
       :global(.language-shell) pre,
       :global(.language-md) pre {
         user-select: all;
-      },
+      }
+      ,
       :global(.language-TypeScript) pre {
         user-select: all;
       }
     `}</style>
   </pre>
-);
+)
 
-const InlineCode = ({ children }: Props) => (
+const InlineCode = ({ children }: Props): JSX.Element => (
   <code>
     {children}
     <style jsx>{`
@@ -241,7 +262,7 @@ const InlineCode = ({ children }: Props) => (
         color: rgb(212, 0, 255);
         font-size: 0.875em;
         white-space: pre-wrap;
-        font-family: "Lucida Console", Monaco, monospace;
+        font-family: 'Lucida Console', Monaco, monospace;
       }
       code::before {
         content: '\`';
@@ -254,93 +275,95 @@ const InlineCode = ({ children }: Props) => (
       }
     `}</style>
   </code>
-);
+)
 
 // UL, OL, LI 指定する場合は components に含めること
 // 今はいったん外している
-export const UL = ({ children }: Props) => (
-<ul>
+export const UL = ({ children }: Props): JSX.Element => (
+  <ul>
     {children}
     <style jsx>
-    {`
+      {`
         ul {
-        padding: 0;
-        list-style-type: none;
-        margin-left: 15px;
+          padding: 0;
+          list-style-type: none;
+          margin-left: 15px;
         }
         ul > :global(li::before) {
-        content: '-';
-        display: inline-block;
-        color: #999;
-        position: absolute;
-        margin-left: -15px;
+          content: '-';
+          display: inline-block;
+          color: #999;
+          position: absolute;
+          margin-left: -15px;
         }
-    `}
+      `}
     </style>
-</ul>
-);
+  </ul>
+)
 
-export const OL = ({ children }: Props) => (
-<ol>
+export const OL = ({ children }: Props): JSX.Element => (
+  <ol>
     {children}
     <style jsx>
-    {`
+      {`
         ol {
-        padding: 0;
-        margin-left: 15px;
+          padding: 0;
+          margin-left: 15px;
         }
-    `}
+      `}
     </style>
-</ol>
-);
+  </ol>
+)
 
-export const LI = ({ children }: Props) => (
-<li>
+export const LI = ({ children }: Props): JSX.Element => (
+  <li>
     {children}
     <style jsx>
-    {`
+      {`
         li {
-        font-size: inherit;
-        line-height: 24px;
-        margin-bottom: 10px;
+          font-size: inherit;
+          line-height: 24px;
+          margin-bottom: 10px;
         }
-    `}
+      `}
     </style>
-</li>
+  </li>
 )
 
-const TABLE= ( {children } :Props) => (
-    <table>
-        {children}<style jsx>{`
-          table {
-            width: 100%;
-            margin: 30px 0;
-            border: none;
-          }
-        `}</style>
-    </table>
+const TABLE = ({ children }: Props): JSX.Element => (
+  <table>
+    {children}
+    <style jsx>{`
+      table {
+        width: 100%;
+        margin: 30px 0;
+        border: none;
+      }
+    `}</style>
+  </table>
 )
 
-
-const TR = ( { children } :Props) => (
-    <tr>
-        {children}<style jsx>{`          
-        tr {
-            text-align: left;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 24px;
-          }`}</style>
-    </tr>
+const TR = ({ children }: Props): JSX.Element => (
+  <tr>
+    {children}
+    <style jsx>{`
+      tr {
+        text-align: left;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+      }
+    `}</style>
+  </tr>
 )
 
 type DetailsProps = {
   children: ReactChildren
-  close: boolean;
+  close: boolean
 }
 
-const Details = ({ children, ...props } :DetailsProps) => {
-  return (<details open={!props.close}>{children}</details>)
+const Details = ({ children, ...props }: DetailsProps): JSX.Element => {
+  return <details open={!props.close}>{children}</details>
 }
 
 // UL, OL, LI 指定する場合は以下のオブジェクトに含めること
@@ -356,9 +379,11 @@ const components = {
   table: TABLE,
   tr: TR,
   inlineCode: InlineCode,
-  details: Details
-};
+  details: Details,
+}
 
-const Markdown = ({ children }: Props) => <MDXProvider components={components}>{children}</MDXProvider>;
+const Markdown = ({ children }: Props): JSX.Element => (
+  <MDXProvider components={components}>{children}</MDXProvider>
+)
 
-export default Markdown;
+export default Markdown
