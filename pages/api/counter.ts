@@ -12,6 +12,10 @@ export default async (
       break
 
     case 'GET':
+      const list_ = fs.readdirSync('src')
+      res.json(JSON.stringify(list_))
+      res.end()
+      /*
       if (!req.query.id) {
         res.writeHead(400).end('bad request')
         break
@@ -30,6 +34,7 @@ export default async (
       })
       res.end()
       break
+      */
   }
 }
 
