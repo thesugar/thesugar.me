@@ -18,7 +18,8 @@ export default async (
       */ 
 
       const fs = require('fs')
-      const list_ = fs.readdirSync('datasrc')
+      const list_ = __dirname
+      //const list_ = fs.readdirSync('../../datasrc')
       res.json(list_)
       res.end()
       /*
