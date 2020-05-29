@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import fs from 'fs'
 
 export default async (
   req: NextApiRequest,
@@ -7,13 +6,20 @@ export default async (
 ): Promise<void> => {
   switch (req.method) {
     case 'POST':
-      incrementViews(req.body.id)
+      //incrementViews(req.body.id)
       res.end()
       break
 
     case 'GET':
+      /* こうすれば読み取り自体はできる
       const test = require('../../test')
       res.json(test)
+      res.end()
+      */ 
+
+      const fs = require('fs')
+      const list_ = fs.readdirSync('datasrc')
+      res.json(list_)
       res.end()
       /*
       if (!req.query.id) {
@@ -38,6 +44,7 @@ export default async (
   }
 }
 
+/*
 const incrementViews = (postId: string): void => {
   fs.readFile('src/' + postId + '.json', 'utf8', (err, data) => {
     if (err) {
@@ -74,3 +81,4 @@ const incrementViews = (postId: string): void => {
 const readViews = async (postId: string) => {
   return await fs.promises.readFile('src/' + postId + '.json', 'utf8')
 }
+*/
