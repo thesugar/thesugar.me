@@ -12,7 +12,7 @@ export default async (
       break
 
     case 'GET':
-      const list_ = fs.readdirSync('src')
+      const list_ = fs.readdirSync('datasrc')
       res.json(JSON.stringify(list_))
       res.end()
       /*
