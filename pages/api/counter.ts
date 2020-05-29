@@ -19,7 +19,7 @@ export default async (
       */ 
 
       const fs = require('fs')
-      const list_ = fs.readdirSync('./.next/serverless/pages')
+      const list_ = fs.readdirSync('./.next/serverless/pages/api')
       //const list_ = fs.readdirSync('../../datasrc')
       res.json(list_)
       res.end()
