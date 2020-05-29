@@ -19,9 +19,8 @@ export default async (
       */ 
 
       const fs = require('fs')
-      const list_ = fs.readdirSync('./.next/serverless/pages/api')
-      //const list_ = fs.readdirSync('../../datasrc')
-      res.json(list_)
+      const file_ = fs.readFileSync('public/datasource/test.json')
+      res.json(file_)
       res.end()
       /*
       if (!req.query.id) {
