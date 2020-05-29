@@ -38,7 +38,7 @@ const Home = (): JSX.Element => {
       </Head>
       <header className="header">{THESUGARME}</header>
 
-      <p>This is development env.17:45</p>
+      <p>This is development env. 18:20</p>
       {selfIntroduction}
 
       <section>

@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import { readdirSync } from 'fs'
 
 export default async (
   req: NextApiRequest,
@@ -18,7 +19,7 @@ export default async (
       */ 
 
       const fs = require('fs')
-      const list_ = __dirname
+      const list_ = fs.readdirSync('.')
       //const list_ = fs.readdirSync('../../datasrc')
       res.json(list_)
       res.end()
