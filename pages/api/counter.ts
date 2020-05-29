@@ -19,7 +19,7 @@ export default async (
       */ 
 
       const fs = require('fs')
-      const file_ = fs.readFileSync('public/datasource/test.json')
+      const file_ = fs.readFileSync('https://thesugar-me-git-api-verify.thesugar.now.sh/datasource/test.json')
       res.json(file_)
       res.end()
       /*
