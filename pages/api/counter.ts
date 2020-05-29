@@ -12,8 +12,8 @@ export default async (
       break
 
     case 'GET':
-      const list_ = fs.readdirSync('datasrc')
-      res.json(JSON.stringify(list_))
+      const test = require('../../test')
+      res.json(test)
       res.end()
       /*
       if (!req.query.id) {

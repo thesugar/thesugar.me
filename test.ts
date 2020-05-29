@@ -1,0 +1,1 @@
+export const data = {"likes": 14, "views": 9, "comments" : ["aaa", "bbb"]}
