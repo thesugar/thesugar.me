@@ -23,7 +23,7 @@ export default async (
 
       const fs = require('fs')
       const fileContent = fs.readFileSync(
-        path.join('https://thesugar-me-git-api-verify.thesugar.now.sh/datasrc/05181400.json'), 
+        path.join(process.cwd(), 'datasrc/05181400.json'), 
         'utf8'
       )
       res.json(fileContent)
