@@ -12,6 +12,9 @@ const withMDX = require('@next/mdx')({
 
 const nextConfig = {
   pageExtensions: ['jsx', 'js', 'mdx', 'md', 'ts', 'tsx'],
+  serverRuntimeConfig: {
+    PROJECT_ROOT: __dirname
+  }
 }
 
 module.exports = withMDX(nextConfig)

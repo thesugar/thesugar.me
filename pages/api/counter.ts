@@ -1,5 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
+import fs from 'fs'
+import getConfig from 'next/config'
+const { serverRuntimeConfig } = getConfig()
 
 export default async (
   req: NextApiRequest,
@@ -20,7 +23,7 @@ export default async (
 
       const fs = require('fs')
       const fileContent = fs.readdirSync(
-        path.join(__dirname, '..', '..'), 
+        path.join(serverRuntimeConfig.PROJECT_ROOT), 
         'utf8'
       )
       res.json(fileContent)
