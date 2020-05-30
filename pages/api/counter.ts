@@ -22,11 +22,9 @@ export default async (
       */ 
 
       const fs = require('fs')
-      const fileContent = fs.readFileSync(
-        path.join(process.cwd(), 'datasrc/05181400.json'), 
-        'utf8'
-      )
-      res.json(fileContent)
+      const processCwd = process.cwd()
+      const dirname = __dirname
+      res.json({process_cwd: processCwd, dirname: dirname})
       res.end()
       /*
       if (!req.query.id) {
