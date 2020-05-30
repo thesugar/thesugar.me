@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { readdirSync } from 'fs'
+import path from 'path'
 
 export default async (
   req: NextApiRequest,
@@ -19,8 +19,11 @@ export default async (
       */ 
 
       const fs = require('fs')
-      const file_ = fs.readFileSync('https://thesugar-me-git-api-verify.thesugar.now.sh/datasource/test.json')
-      res.json(file_)
+      const fileContent = fs.readdirSync(
+        path.join(__dirname, '..', '..'), 
+        'utf8'
+      )
+      res.json(fileContent)
       res.end()
       /*
       if (!req.query.id) {
