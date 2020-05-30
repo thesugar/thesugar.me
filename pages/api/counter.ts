@@ -22,8 +22,8 @@ export default async (
       */ 
 
       const fs = require('fs')
-      const fileContent = fs.readdirSync(
-        path.join(serverRuntimeConfig.PROJECT_ROOT), 
+      const fileContent = fs.readFileSync(
+        path.join('./datasrc/05181400.json'), 
         'utf8'
       )
       res.json(fileContent)
