@@ -20,7 +20,7 @@
       },
       {
         "src": "/datasrc/*.json",
-        "use": "@now/node"
+        "dest": "@now/node"
       }
     ]
   }
