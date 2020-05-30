@@ -10,7 +10,7 @@
       },
       {
         "src": "/datasrc/*.json",
-        "use": "@now/node"
+        "use": "@now/static"
       }
     ],
     "routes": [
