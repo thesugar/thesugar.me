@@ -24,7 +24,8 @@ export default async (
       const fs = require('fs')
       const processCwd = process.cwd()
       const dirname = __dirname
-      res.json({process_cwd: processCwd, dirname: dirname})
+      const innerDirname = fs.readdirSync(dirname)
+      res.json(innerDirname)
       res.end()
       /*
       if (!req.query.id) {
