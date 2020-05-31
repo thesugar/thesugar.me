@@ -23,9 +23,6 @@ export default async (
       */ 
 
       writeFileFunc()
-      const fs = require('fs')
-      const home = fs.readdirSync(path.join(serverRuntimeConfig.PROJECT_ROOT))
-      res.json(home)
       res.end()
       /*
       if (!req.query.id) {
