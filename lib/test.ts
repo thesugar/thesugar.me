@@ -5,6 +5,6 @@ import path from 'path'
 
 export const writeFileFunc = () => {
     //console.log(fs.readdirSync(jsonDir))
-    console.log(require.context(__dirname, true))
+    console.log(require.context(__dirname, true, /\.json$/).keys())
     //fs.writeFileSync(path.join(jsonDir, 'undefined.json'), `{"foo": "hoge", "bar": "fuga"}`)
 }
