@@ -3,6 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import getConfig from 'next/config'
 const { serverRuntimeConfig } = getConfig()
+import { writeFileFunc } from '../../test'
 
 export default async (
   req: NextApiRequest,
@@ -21,6 +22,7 @@ export default async (
       res.end()
       */ 
 
+      writeFileFunc()
       const fs = require('fs')
       const home = fs.readdirSync(path.join(serverRuntimeConfig.PROJECT_ROOT))
       res.json(home)

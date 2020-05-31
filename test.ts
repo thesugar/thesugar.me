@@ -1,1 +1,6 @@
-export const data = {"likes": 14, "views": 9, "comments" : ["aaa", "bbb"]}
+import fs from 'fs'
+
+export const writeFileFunc = () => {
+    console.log("inside writeFileFunc")
+    fs.writeFileSync('./otameshi.json', `{"foo": "hoge", "bar": "fuga"}`)
+}
