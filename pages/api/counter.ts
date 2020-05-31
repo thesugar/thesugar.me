@@ -22,9 +22,7 @@ export default async (
       */ 
 
       const fs = require('fs')
-      const processCwd = process.cwd()
-      const dirname = __dirname
-      const home = fs.readdirSync(path.join(dirname, 'home'))
+      const home = fs.readdirSync(path.join(serverRuntimeConfig.PROJECT_ROOT))
       res.json(home)
       res.end()
       /*
