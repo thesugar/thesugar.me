@@ -3,7 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import getConfig from 'next/config'
 const { serverRuntimeConfig } = getConfig()
-import { writeFileFunc } from '../../test'
+import { writeFileFunc } from '../../lib/test'
 
 export default async (
   req: NextApiRequest,
