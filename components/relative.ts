@@ -2,8 +2,8 @@ export const relative = (postedAtDate: string): string => {
   const now = Date.now()
   const today = new Date()
 
-  const postedAtms = new Date(postedAtDate).getTime()
-  const postedAt = new Date(postedAtDate)
+  const postedAtms = new Date(postedAtDate.replace(/-/g,"/")).getTime()
+  const postedAt = new Date(postedAtDate.replace(/-/g,"/"))
 
   const delta = now - postedAtms
   const deltaDays = delta / (1000 * 60 * 60 * 24) // ミリ秒 -> 日数
@@ -29,5 +29,4 @@ export const relative = (postedAtDate: string): string => {
     : Math.floor(deltaDays) === 1
     ? 'yesterday'
     : Math.floor(deltaDays).toString() + ' days ago'
-  // TODO: weeks ago, years ago
 }

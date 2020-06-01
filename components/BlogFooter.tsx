@@ -1,9 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styles from './layout.module.css'
-import LikeButton from '../components/LikeButton'
 import { Tags } from '../components/Tags'
-import { Comments } from '../components/Comments'
 import Twitter from '../components/icons/twitter'
 import Hatena from '../components/icons/hatena'
 
@@ -14,24 +12,13 @@ type Props = {
     date: string
     tags: string[]
   }
-  currentLiked: boolean
-  setCurrentLiked: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const BlogFooter = ({
-  meta,
-  currentLiked,
-  setCurrentLiked,
-}: Props): JSX.Element => {
+const BlogFooter = ({ meta }: Props): JSX.Element => {
   return (
     <React.Fragment>
       <Tags tags={meta.tags} />
       <div className={styles.footerContainer}>
-        <LikeButton
-          meta={meta}
-          currentLiked={currentLiked}
-          setCurrentLiked={setCurrentLiked}
-        />
         <span>
           <a
             className={`${styles.btnSocialCircle} ${styles.twitter}`}
@@ -61,8 +48,6 @@ const BlogFooter = ({
           ></script>
         </span>
       </div>
-
-      <Comments id={meta.id} />
 
       <Link href="/">
         <a className={styles.backToHome}>← Top page</a>

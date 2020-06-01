@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Head from 'next/head'
 import styles from './layout.module.css'
 import Markdown from './Markdown'
@@ -6,7 +6,6 @@ import { relative } from './relative'
 import THESUGARME from './ThesugarMe'
 import BlogFooter from './BlogFooter'
 import Toc from './toc'
-import LikeButton from '../components/LikeButton'
 import Twitter from '../components/icons/twitter'
 import Hatena from '../components/icons/hatena'
 
@@ -20,49 +19,7 @@ type Props = {
   }
 }
 
-const kickViewedCounter = async (id: string) => {
-  await fetch('/api/counter', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      id: `${id}`,
-    }),
-  })
-}
-
-const getViews = async (id: string) => {
-  while (true) {
-    try {
-      const res = await fetch(`/api/counter?id=${id}`)
-      return await res.json()
-    } catch (err) {
-      continue
-    }
-  }
-}
-
 const Layout = ({ children, meta }: Props): JSX.Element => {
-  const [currentLiked, setCurrentLiked] = useState(false)
-
-  const [views, setViews] = useState(0)
-
-  useEffect(() => {
-    const func = async () => {
-      const value = await getViews(meta.id)
-      setViews(JSON.parse(JSON.stringify(value)).views)
-    }
-    func()
-  }, [meta.id])
-
-  useEffect(() => {
-    const kick = async () => {
-      await kickViewedCounter(meta.id)
-    }
-    kick()
-  }, [meta.id])
-
   let previewText = ''
   children.map((child: { props: any }) => {
     if (
@@ -121,11 +78,6 @@ const Layout = ({ children, meta }: Props): JSX.Element => {
         <div className={styles.thesugar}>{THESUGARME}</div>
         <div className={styles.leftNav}>
           <div className={styles.containerInLeftNav}>
-            <LikeButton
-              meta={meta}
-              currentLiked={currentLiked}
-              setCurrentLiked={setCurrentLiked}
-            />
             <div>
               <a
                 className={`${styles.btnSocialCircle} ${styles.twitter}`}
@@ -170,7 +122,6 @@ const Layout = ({ children, meta }: Props): JSX.Element => {
                 {meta.date}
                 <span> ({relative(meta.date)})</span>
               </div>
-              <div className={styles.views}>{views ? views : 1} views</div>
             </div>
           </header>
 
@@ -179,11 +130,7 @@ const Layout = ({ children, meta }: Props): JSX.Element => {
           </main>
 
           <footer>
-            <BlogFooter
-              meta={meta}
-              currentLiked={currentLiked}
-              setCurrentLiked={setCurrentLiked}
-            />
+            <BlogFooter meta={meta} />
           </footer>
         </div>
 
