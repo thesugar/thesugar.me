@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/ogpGenerator.js && next build",
     "start": "next start",
     "lint": "eslint . --fix"
   },
