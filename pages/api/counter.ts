@@ -3,7 +3,8 @@ import path from 'path'
 import fs from 'fs'
 import getConfig from 'next/config'
 const { serverRuntimeConfig } = getConfig()
-import { writeFileFunc } from '../../lib/test'
+//import { writeFileFunc } from '../../lib/test'
+import { getSortedPostsData } from '../../lib/test'
 
 export default async (
   req: NextApiRequest,
@@ -22,7 +23,9 @@ export default async (
       res.end()
       */ 
 
-      writeFileFunc()
+      //writeFileFunc()
+      const data = getSortedPostsData()
+      res.json(data)
       res.end()
       /*
       if (!req.query.id) {
