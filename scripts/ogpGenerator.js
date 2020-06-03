@@ -1,28 +1,25 @@
 const fs = require('fs')
 const { createCanvas } = require('canvas')
 const base64 = require('urlsafe-base64')
-// canvasの横幅
 let canvasWidth = 1200
-// canvasの縦幅
 let canvasHeight = 630
 let canvas
 let ctx
 
-// タイトル部分の文字スタイル
 const titleFontStyle = {
   font:
     "bold 100px -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', HiraginoCustom, 'Hiragino Kaku Gothic ProN', YuGothic, 'Yu Gothic Medium', Meiryo, sans-serif;",
   lineHeight: 120,
   color: '#121B1C',
 }
-// 本文部分の文字スタイル
+
 const bodyFontStyle = {
   font:
     'bold 80px Palatino, "Hiragino Mincho ProN", "ヒラギノ明朝 Pro W6", "Hiragino Mincho Pro", HGS明朝E, "Yu Mincho", YuMincho, "ＭＳ Ｐ明朝", serif',
   lineHeight: 80,
   color: '#03A9F4',
 }
-// 画像内側余白
+
 let padding = 80
 
 // 背景色
@@ -68,7 +65,7 @@ const generate = (title, body, fileName) => {
     ctx = canvas.getContext('2d')
   }
 
-  // 取り敢えず背景色をつける
+  // 背景色をつける
   let gradient = ctx.createLinearGradient(100, 0, canvas.width - 100, 0)
   gradient.addColorStop(0, 'white')
   gradient.addColorStop(1, '#6190E8')

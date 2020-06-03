@@ -10,6 +10,7 @@ import {
 } from '../components/sugar.config'
 import { importAll } from '../components/importAll'
 import THESUGARME from '../components/ThesugarMe'
+import Foot from '../components/Foot'
 
 const blogItems = importAll(
   require.context(__dirname + '/articles', true, /\.mdx$/)
@@ -36,12 +37,19 @@ const Home = (): JSX.Element => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@_thesugar_" />
       </Head>
-      <header className="header">{THESUGARME}</header>
+      <header className="header">
+        {THESUGARME}
+      <div className="headNav">
+      <Link href='/about'><a>About</a></Link>
+      </div>
+      </header>
 
+      <section className="self-introduction">
       {selfIntroduction}
+      </section>
 
       <section>
-        <div className="writing">Writings</div>
+        <h1 className="writing">Writings</h1>
         {defaultItems.map((item) => {
           const articlePath = '/articles' + item.name.slice(1)
           return (
@@ -78,10 +86,14 @@ const Home = (): JSX.Element => {
             justify-content: space-between;
           }
 
+          .writing {
+            font-size: 1rem;
+            font-weight: normal;
+          }
+
           .postTitle {
             flex: 1 1 auto;
             font-size: medium;
-            text-indent: -1em;
             max-width: 80%;
           }
 
@@ -156,9 +168,9 @@ const Home = (): JSX.Element => {
         </a>
       )}
 
-      <div>
+      <Foot home={true}>
         <SocialMedia />
-      </div>
+      </Foot>
     </div>
   )
 }

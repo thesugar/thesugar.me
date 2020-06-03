@@ -5,6 +5,7 @@ import ThesugarMe from '../../components/ThesugarMe'
 import { getAllTags, getArticlesWithTagName } from '../../lib/tag'
 import Link from 'next/link'
 import { Tags } from '../../components/Tags'
+import Foot from '../../components/Foot'
 
 type PostData = {
   id: string
@@ -27,10 +28,15 @@ const Tag = ({
       <title>{tag}の記事一覧</title>
     </Head>
     {ThesugarMe}
-    <div>
+    <h1>
       タグ：{tag} の記事一覧（{articles.length} 件）
-    </div>
-    <ul>
+      <style jsx>{`
+        h1 {
+          font-size: 1.2rem;
+          margin-bottom: 1.5rem;
+        }
+      `}</style>
+    </h1>
       {articles.map((item) => (
         <div key={item.title} className="wrapper">
           <div className="postTitle">
@@ -50,12 +56,12 @@ const Tag = ({
             }
 
             .wrapper {
-              padding-bottom: 1.5rem;
+              padding-bottom: 1.0rem;
             }
           `}</style>
         </div>
       ))}
-    </ul>
+    <Foot />
   </div>
 )
 

@@ -8,6 +8,7 @@ import BlogFooter from './BlogFooter'
 import Toc from './toc'
 import Twitter from '../components/icons/twitter'
 import Hatena from '../components/icons/hatena'
+import Foot from '../components/Foot'
 
 type Props = {
   children: any
@@ -129,9 +130,9 @@ const Layout = ({ children, meta }: Props): JSX.Element => {
             <Markdown>{children}</Markdown>
           </main>
 
-          <footer>
+          <Foot>
             <BlogFooter meta={meta} />
-          </footer>
+          </Foot>
         </div>
 
         <div className={styles.rightNav}>

@@ -51,6 +51,10 @@ const SocialMedia = (): JSX.Element => {
           justify-content: space-evenly;
         }
 
+        a :hover {
+          background-color: inherit;
+        }
+
         .btn-social-icon-twitter {
           text-decoration: none;
           display: inline-block;
@@ -80,7 +84,7 @@ const SocialMedia = (): JSX.Element => {
         }
 
         .qiita {
-          width: 100px;
+          width: 50px;
           text-decoration: none;
           display: inline-block;
         }

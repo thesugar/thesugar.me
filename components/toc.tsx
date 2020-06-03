@@ -25,6 +25,11 @@ const Toc = ({ content }: Props): JSX.Element => {
     if (headingNum > previousNum) {
       toclist.push('<ul style="list-style: none; padding-left: 1rem;">')
     }
+    
+    if (headingNum < previousNum) {
+      toclist.push('</ul>')
+    }
+
     if (content.props.children.toString() === '[object Object]') {
       toclist.push(
         `<li><a href='#${content.props.children.props.children}' style='padding:0'>${content.props.children.props.children}</a></li>`
@@ -33,10 +38,6 @@ const Toc = ({ content }: Props): JSX.Element => {
       toclist.push(
         `<li><a href='#${content.props.children.toString()}' style='padding:0'>${content.props.children.toString()}</a></li>`
       )
-    }
-
-    if (headingNum < previousNum) {
-      toclist.push('</ul>')
     }
 
     previousNum = headingNum

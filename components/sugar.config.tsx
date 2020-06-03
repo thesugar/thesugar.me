@@ -7,8 +7,7 @@ export const siteOgDescription = 'TheSugar.Me 🤓'
 
 const greet = (
   <>
-    東大工学部卒→某金融機関のR&D部門の機械学習エンジニア。機械学習、フロントエンド、純粋関数型言語などに興味があります。DL4US、GCIデータサイエンティスト講座修了済。Python
-    / React / Next.js / Haskell
+    東大工学部卒 → 三菱 UFJ フィナンシャルグループ（R&D・開発）→ 無職。<br />機械学習や Web フロントエンド、モバイルアプリ、純粋関数型言語などに興味があります。
   </>
 )
 

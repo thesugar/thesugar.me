@@ -48,10 +48,6 @@ const BlogFooter = ({ meta }: Props): JSX.Element => {
           ></script>
         </span>
       </div>
-
-      <Link href="/">
-        <a className={styles.backToHome}>← Top page</a>
-      </Link>
     </React.Fragment>
   )
 }
