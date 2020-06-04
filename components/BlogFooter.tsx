@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import styles from './layout.module.css'
 import { Tags } from '../components/Tags'
 import Twitter from '../components/icons/twitter'

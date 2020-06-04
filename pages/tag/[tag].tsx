@@ -37,30 +37,30 @@ const Tag = ({
         }
       `}</style>
     </h1>
-      {articles.map((item) => (
-        <div key={item.title} className="wrapper">
-          <div className="postTitle">
-            <Link href={`/articles/${item.id}`}>
-              <a>{item.title}</a>
-            </Link>
-          </div>
-          <div className="postDate">{item.date.slice(0, 10)}</div>
-          <Tags tags={item.tags} />
-          <style jsx>{`
-            a {
-              padding: 0;
-            }
-
-            a:hover {
-              background: none;
-            }
-
-            .wrapper {
-              padding-bottom: 1.0rem;
-            }
-          `}</style>
+    {articles.map((item) => (
+      <div key={item.title} className="wrapper">
+        <div className="postTitle">
+          <Link href={`/articles/${item.id}`}>
+            <a>{item.title}</a>
+          </Link>
         </div>
-      ))}
+        <div className="postDate">{item.date.slice(0, 10)}</div>
+        <Tags tags={item.tags} />
+        <style jsx>{`
+          a {
+            padding: 0;
+          }
+
+          a:hover {
+            background: none;
+          }
+
+          .wrapper {
+            padding-bottom: 1rem;
+          }
+        `}</style>
+      </div>
+    ))}
     <Foot />
   </div>
 )

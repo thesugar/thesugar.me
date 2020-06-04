@@ -25,7 +25,7 @@ const Toc = ({ content }: Props): JSX.Element => {
     if (headingNum > previousNum) {
       toclist.push('<ul style="list-style: none; padding-left: 1rem;">')
     }
-    
+
     if (headingNum < previousNum) {
       toclist.push('</ul>')
     }

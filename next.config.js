@@ -19,11 +19,11 @@ const nextConfig = {
       return [
         {
           source: '/articles/',
-          destination: '/articles'
+          destination: '/articles',
         },
       ]
-    }
-  }
+    },
+  },
 }
 
 module.exports = withMDX(nextConfig)

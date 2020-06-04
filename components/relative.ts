@@ -2,8 +2,8 @@ export const relative = (postedAtDate: string): string => {
   const now = Date.now()
   const today = new Date()
 
-  const postedAtms = new Date(postedAtDate.replace(/-/g,"/")).getTime()
-  const postedAt = new Date(postedAtDate.replace(/-/g,"/"))
+  const postedAtms = new Date(postedAtDate.replace(/-/g, '/')).getTime()
+  const postedAt = new Date(postedAtDate.replace(/-/g, '/'))
 
   const delta = now - postedAtms
   const deltaDays = delta / (1000 * 60 * 60 * 24) // ミリ秒 -> 日数

@@ -39,14 +39,14 @@ const Home = (): JSX.Element => {
       </Head>
       <header className="header">
         {THESUGARME}
-      <div className="headNav">
-      <Link href='/about'><a>About</a></Link>
-      </div>
+        <div className="headNav">
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+        </div>
       </header>
 
-      <section className="self-introduction">
-      {selfIntroduction}
-      </section>
+      <section className="self-introduction">{selfIntroduction}</section>
 
       <section>
         <h1 className="writing">Writings</h1>
