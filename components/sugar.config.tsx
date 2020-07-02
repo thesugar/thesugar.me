@@ -14,6 +14,14 @@ const greet = (
   </>
 )
 
+export const PRIVACY_POLICY_STATE = (
+  <>
+  当サイトでは Google アナリティクスを利用しており、データの収集のために Cookie を使用しています。<br />このデータは匿名で収集されており、個人を特定するものではありません。
+      <br /><br />この機能は Cookie を無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。
+      <br />この規約に関しての詳細は<a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank" rel="noopener noreferrer"> Google アナリティクスサービス利用規約のページ</a>や <a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener noreferrer">Google ポリシーと規約ページ</a>をご覧ください。
+  </>
+)
+
 export const selfIntroduction = (
   <>
     <img className="profile" src="./profile.jpg" alt="Ryohei Sato"></img>
