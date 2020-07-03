@@ -130,7 +130,7 @@ const About = (): JSX.Element => {
         <ul>
           <li>Swift</li>
           <li>Haskell / Functional Programming</li>
-          <li>Docker</li>
+          <li>Docker / Kubernetes</li>
           <li>GCP</li>
           <li>Firebase, Firestore</li>
         </ul>
@@ -139,18 +139,19 @@ const About = (): JSX.Element => {
         <ul>
           <li>応用情報技術者</li>
           <li>
-            <Link href="/gcp_cert.pdf">
-              <a target="_blank">
-                Google Cloud Platform Fundamentals: Core Infrastructure
-              </a>
-            </Link>
+            <a href="https://coursera.org/share/cfeb78fbbc794a69c73e920178a73584" target="_blank" rel="noopener noreferrer">
+              Google Cloud Platform Fundamentals: Core Infrastructure
+            </a>
           </li>
           <li>
-            <Link href="/gcp_bigdata_cert.pdf">
-              <a target="_blank">
-                Google Cloud Platform Big Data and Machine Learning Fundamentals
-              </a>
-            </Link>
+            <a href="https://coursera.org/share/40b3f3fe0faf4de66c51da5a22a4f33d" target="_blank" rel="noopener noreferrer">
+              Google Cloud Platform Big Data and Machine Learning Fundamentals
+            </a>
+          </li>
+          <li>
+            <a href="https://google.qwiklabs.com/public_profiles/30375ea9-9070-4975-bf63-6fa0b9621dd3" target="_blank" rel="noopener noreferrer">
+              Qwiklabs
+            </a>
           </li>
         </ul>
 
