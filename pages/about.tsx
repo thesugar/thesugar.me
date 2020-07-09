@@ -105,7 +105,11 @@ const About = (): JSX.Element => {
             >
               DL4US（東京大学 Deep Learning 実践開発講座）
             </a>{' '}
-            第 3 期修了（<strong>総合 2 位</strong>）
+            第 3 期<Link href="/dl4us_cert.pdf">
+              <a target="_blank">
+                修了
+              </a>
+            </Link>（<strong>総合 2 位</strong>）
           </li>
           <li>
             <a href="https://gci.t.u-tokyo.ac.jp/">
@@ -122,7 +126,17 @@ const About = (): JSX.Element => {
             >
               東京大学 実データで学ぶ人工知能講座
             </a>
-            （2019 年度後期）修了（<strong>優秀賞</strong>受賞）
+            （2019 年度後期）<Link href="/learnai_completion.pdf">
+              <a target="_blank">
+                修了
+              </a>
+            </Link>（<strong>
+            <Link href="/learnai_award.pdf">
+              <a target="_blank">
+                優秀賞
+              </a>
+            </Link>
+              </strong>受賞）
           </li>
         </ul>
 
