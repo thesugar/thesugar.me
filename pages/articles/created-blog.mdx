@@ -1,5 +1,6 @@
 import Layout from '../../components/Layout'
 import Link from 'next/link'
+import { TwitterTweetEmbed } from "react-twitter-embed"
 
 export const meta = {
 	id: 'created-blog',
@@ -229,7 +230,7 @@ CDN から呼び出す部分も同様で、HTML ヘッダー内で
 
 Twitter の埋め込みリンクをそのまま使えばいいと思ったら、そうすると以下のように引用文として表示されてしまうことが判明。
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">速報　ついに俺がTypeScriptへ入門</p>&mdash; thesugar (@_thesugar_) <a href="https://twitter.com/_thesugar_/status/1247107952005091328?ref_src=twsrc%5Etfw">April 6, 2020</a></blockquote>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">Next.js + TypeScript + MDX on Vercel でブログ（というか個人ホームページみたいなもの）自作しました〜！<br />今までの経歴やら顔写真（需要無し）やら個人情報全開ノーガード戦法でやっていきます。<br />よろしくお願いします〜。<a href="https://t.co/S4wS0BxWw3">https://t.co/S4wS0BxWw3</a></p>&mdash; thesugar (@_thesugar_) <a href="https://twitter.com/_thesugar_/status/1281568938871029761?ref_src=twsrc%5Etfw">July 10, 2020</a></blockquote>
 
 いろいろと調べてみたものの、カードとして表示するには`react-twitter-embed` というライブラリを使うのが一番手っ取り早そうだった。
 
@@ -237,12 +238,12 @@ Twitter の埋め込みリンクをそのまま使えばいいと思ったら、
 
 ```jsx
 <TwitterTweetEmbed
-  tweetId={'1247107952005091328'}
+  tweetId={'1281568938871029761'}
 />
 ```
 
 <TwitterTweetEmbed
-  tweetId={'1247107952005091328'}
+  tweetId={'1281568938871029761'}
 />
 
 ### ツイートで共有するボタン
