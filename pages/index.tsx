@@ -125,7 +125,7 @@ const Home = (): JSX.Element => {
         `}</style>
       </section>
 
-      {!readMore && (
+      {!readMore && blogItems.length > 5 && (
         <a className="readMore" onClick={() => setReadMore(!readMore)}>
           ...Read more
           <style jsx>{`

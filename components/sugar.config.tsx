@@ -7,7 +7,7 @@ export const siteOgDescription = 'TheSugar.Me 🤓'
 
 const greet = (
   <>
-    東大工学部卒 → 三菱 UFJ フィナンシャルグループ（R&D・開発）→ 無職。
+    東大工学部卒 → 三菱 UFJ フィナンシャルグループの R&D 部門にて機械学習エンジニア。その後退職し、現在は無職。
     <br />
     機械学習や Web
     フロントエンド、モバイルアプリ、純粋関数型言語などに興味があります。
