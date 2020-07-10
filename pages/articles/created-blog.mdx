@@ -1,0 +1,422 @@
+import Layout from '../../components/Layout'
+import Link from 'next/link'
+
+export const meta = {
+	id: 'created-blog',
+	title: 'ブログを作りました',
+	date: '2020-07-10 21:26',
+	tags: ['Next.js','ブログについて']
+}
+
+はじめまして。thesugar と申します。  
+このたび、ブログを自作しました。
+
+まずは最初の記事として、このブログについてと、ブログを自作するということについてお話しようと思います。
+
+<hr />
+
+## はじめに
+### なぜブログを作ろうと思ったのか
+
+私は大学を卒業してから、国内の金融機関に新卒で入社し 2 年半ほど営業職として働いたのち、同社で機械学習エンジニアとして働いていたが、今年の 4 月末に退職して、現在は **無職** である
+（退職に至った理由や今後どうしていくのかといったことはまたの機会にお話ししようと思う）。
+
+ふつう、新生活というと進学や就職、転職を指すものだろうけど、会社をやめて無職になるということも立派な新生活である。  
+そして、新生活をはじめるとなれば、何か新しいことをしたくなる。私の場合は、自分の学びや所感を書きとめ、自分の好きなコンテンツを好きな形式で加えていけるような、ちょっとした拠点のようなものがほしくなった。  
+一言で言えば、それがこのブログを始めようと思ったきっかけである。
+
+ここまでは便宜的に「ブログ」という言い方をしているけれども、ブログ記事以外にもコンテンツを追加したりして、いわゆるポートフォリオサイトのような要素も加えていきたい。
+ただ、まだポートフォリオというほど制作物が揃っているわけでもないこともあって、自分の中でのこのサイトの位置付けは、一昔前流行った個人ホームページのようなものが一番イメージとしては近いかもしれない。
+
+記事の内容としてもたとえば技術ブログといったような一貫したテーマを定めているわけではなく、まずは思いつくままに書いていきたい。
+
+### ブログ自体を「自作」するということ
+
+さて、このブログ（ホームページ）は、WordPress などのブログ用ソフトウェアや、はてなブログといったプラットフォームを使ったものではなく、ブログシステム自体を自作したものである。
+
+ブログあるいは個人ホームページを作りたいのであれば、WordPress や各種ブログサイトを利用するだけで手軽にじゅうぶん自由度の高いコンテンツが作れるし、そういったブログサイトでは新着記事のピックアップやブログユーザー同士のコミュニティなど、いろいろとありがたい機能も備わっている。
+
+それにも関わらず、そういったサービスを利用せずこうしてブログ自体を自作しようと思ったのは、ただ単純に自分でモノを作ることが好きだからだ。
+
+そして実際に作ってみてわかったことだが、ブログを自作するということは個人で何か開発したいと思っている人が次に取り組むべきテーマとしてうってつけのものである。
+
+まず、要件がシンプルである。基本的には、自分で書いた記事が表示できればそれでブログシステムとしては成立する。
+
+次に、絶対に利用者（自分）がいるということである。何かアプリを作ろうとするとき、もっぱら他人に使ってもらうアプリであれば、開発や実装それ自体とは別にどう告知するかといったことも考えなくてはならないし、本当に使ってもらえるだろうかというような不安も生まれる。  
+もちろんそれは悪いことでもなければデメリットでもないのだけれど、いずれにしてもあまり気軽に作れるものではない。  
+半面、よくある ToDo アプリなど、何かの技術に慣れることを目的にした簡易なアプリケーションは自分すらも実際には使わないものであったりして、すぐに終わってしまったり開発に実が入らなかったりする。  
+
+だが、自分用のブログアプリを作ろうと決めれば、ブログは自分が使うものだから自然とモチベーションが保てる。
+他人が利用する（記事を投稿するなど）ことはないため要件的な割り切り（削ぎ落とし）もしやすく、一方で、記事を公開すれば他人にも見てもらうことになるため明らかな手抜きもできない。
+
+そういうわけで、もし次に何を作ろうか迷っている開発者の方がいれば、自分用にブログを作ってみるのがおすすめである。
+
+以下では、このブログの技術的な側面を説明していく。なお、ソースコードは [GitHub で公開](https://github.com/thesugar/thesugar.me) している。
+
+## 使用技術
+
+このブログで使用した技術はそう多くない。フレームワークは [Next.js](https://nextjs.org/) を使い、言語は [TypeScript](https://www.typescriptlang.org/) を利用した。  
+記事はマークダウンで書いているが、`.md` ファイルではなく [MDX](https://mdxjs.com/) という、マークダウンの中に [JSX](https://ja.reactjs.org/docs/introducing-jsx.html) を書くことのできる技術を使っている。  
+そして、[Vercel](https://vercel.com/) にデプロイしている。
+
+### Next.js
+
+[Next.js](https://nextjs.org/) は [Vercel](https://vercel.com/home) 社が提供する、React ベースの Web アプリケーション用フレームワークである。  
+通常 React あるいは JavaScript でアプリケーションを作るというと、クライアント（ブラウザ）側で JavaScript を実行するクライアントサイド・レンダリングを行うかたちになる（ことが多い）が、この Next.js を使用すればサーバーサイド・レンダリングを行うことができる。  
+さらに、このブログのように静的なコンテンツを配信する場合は、アプリをビルドするタイミングで静的サイトとして最適化してくれて、自分でいろいろとパフォーマンスチューニングのようなことを行わずとも高速なサイトを構築することができる。  
+
+<figure>
+<img src="/performance.png" />
+<figcaption>参考：当サイトのパフォーマンス。</figcaption><style jsx>{`
+  figcaption {
+    font-size: 0.8rem;
+    text-align: center;
+    font-family: "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+  }
+    
+  `}</style>
+</figure>
+
+詳しくは [公式のドキュメント](https://nextjs.org/docs/getting-started) や、[公式チュートリアルの和訳（拙訳）](https://qiita.com/thesugar/items/01896c1faa8241e6b1bc)、最新（ver 9.4）機能についても [リリースノートの和訳（拙訳）](https://qiita.com/thesugar/items/95bc20aa98e31501bbfc) などをご覧いただきたい。
+
+最近、Web フロントエンド界隈ではいわゆる JAMstack という、**J**avaScript/ **A**PIs / **M**arkup の 3 技術を使って高パフォーマンスにコンテンツを配信するアーキテクチャが注目を浴びており、Next.js はまさにその方向性に沿ったフレームワークであると言える。  
+
+今までの私の個人的な開発でも Next.js は使ったことがあり基本的な仕様や使い方は理解していたこと、一方で最近のバージョン（Ver 9.3）で取り込まれた `getStaticProps` などの今まで使ったことのなかった機能を試してみたかったということが Next.js を使うことに決めた理由である。
+
+### TypeScript
+
+開発に使った言語は [TypeScript](https://www.typescriptlang.org/)。TypeScript は JavaScript に静的型付けを加えたものである。実は今年の 4 月に TypeScript にはじめて入門し、実際の開発でも使ってみたかったので今回は TypeScript を利用することにした。  
+実際に TypeScript を使ってみたところ、型によるチェックの恩恵はやはりかなり大きく、思っていた以上の書き心地の良さを味わうことができた。  
+TypeScript を使う前には、「TypeScript を使うことによる面倒くささ」のようなものが生じるのではないかと思っていたが、そのようなことも基本的には無く、今後は特に制約のないかぎり JavaScript ではなく TypeScript で書いていきたいというふうに感じた。
+
+### MDX
+
+ブログ記事は [MDX](https://mdxjs.com/) という形式で書いている。MDX は、マークダウンの中に [JSX](https://ja.reactjs.org/docs/introducing-jsx.html) を書くことのできる技術である。  
+普通に文章を書くぶんには通常のマークダウンとまったく同じように書ける。  
+一方で、マークダウンの中でコンポーネントをインポートしたり、記事のメタ情報（タイトルや日付など）をエクスポートして他のコンポーネントやページ（たとえばこのサイトで言えばトップページや記事一覧ページなど）で利用したりすることができる。
+
+マークダウンファイル（実際には `.mdx` ファイル）は `pages/` ディレクトリ配下（正確には `pages/articles/` 配下）に格納している。  
+記事ページのレイアウトを整えて画面に表示するためのコンポーネント `Layout.tsx` を用意しておいて、各 `.mdx` ファイルからは以下のような形でエクスポートしている。
+
+```tsx
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
+```
+
+そうすると、`/articles/(記事のファイル名（".mdx"は除く）)` にアクセスすればレイアウト付けがなされたページが表示される。
+
+実際には `Markdown.tsx` という、マークダウンを HTML 化する際のスタイリングなどを設定するためのコンポーネントを挟んだりしているが、流れとしては上記のようになる。
+
+参考までに実際のコードは以下。
+
+- [Layout.tsx](https://github.com/thesugar/thesugar.me/blob/master/components/Layout.tsx)
+- [Markdown.tsx](https://github.com/thesugar/thesugar.me/blob/master/components/Markdown.tsx)
+
+そもそも MDX を使おうと思ったのは、これが Next.js のドキュメントでも用いられていたからである。
+
+このあいだ一度 Next.js のドキュメント（[`next-site`](https://github.com/vercel/next-site)）に typo 修正のプルリクエストを出した際に、マークダウンファイルなのにその中でコンポーネントをインポートしたりエクスポートしたりしていることに気付き、気になって調べてみたところ MDX という技術を知った。
+
+上掲の `Markdown.tsx` というコンポーネントの処理なども、その `next-site` の [こちらのディレクトリ](https://github.com/vercel/next-site/tree/master/components/docs/text) や [この documentation.js](https://github.com/vercel/next-site/blob/master/components/docs/documentation.js) などを大いに参考にしている。
+
+### Vercel へのデプロイ
+
+Vercel は上述のとおり Next.js を提供している会社の名前でもあるが、アプリのデプロイ用プラットフォームの名前でもある。  
+このブログも Vercel にデプロイしている。  
+Next.js を提供している会社が用意してくれている環境というだけあって、Next.js 製アプリを Vercel にデプロイするとパフォーマンス的にかなり最適化される。
+
+デプロイする手順もきわめて簡単で、Vercel 用にアカウントを作る必要こそあるが、あとは GitHub（あるいは GitLab, BitBucket）にアプリのリポジトリが存在すればすぐに本番環境としてデプロイできる。
+
+実際の手順は [公式のチュートリアル](https://nextjs.org/learn/basics/deploying-nextjs-app) や [その和訳（拙訳）](https://qiita.com/thesugar/items/01896c1faa8241e6b1bc#%E3%83%AC%E3%83%83%E3%82%B9%E3%83%B37-nextjs-%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B) を参考にしてほしい。
+
+## ブログの機能
+
+以下では、このブログに実装した機能について簡単に説明していく。
+
+### シンタックスハイライト
+
+ブログ記事中でソースコードを表示するときに、以下のように色付けをする機能。  
+
+```TypeScript
+const myFunc = (): string => {
+    return "Hello THESUGAR.ME"
+}
+```
+
+これは [Prism.js](https://prismjs.com/) を使用している。
+具体的には、
+
+```bash
+yarn add @mdx-js/loader @mapbox/rehype-prism
+# npm を使う場合は以下
+# npm install @mdx-js/loader @mapbox/rehype-prism
+```
+
+以上のようにインストールしてから、`next.config.js` に以下のように書く。
+
+```JavaScript
+// next.config.js
+const rehypePrism = require('@mapbox/rehype-prism')
+
+const withMDX = require('@next/mdx')({
+  extension: /\.(md|mdx)?$/,
+  options: {
+    rehypePlugins: [rehypeKatex, rehypePrism],
+  },
+})
+
+const nextConfig = {
+  pageExtensions: ['jsx', 'js', 'mdx', 'md', 'ts', 'tsx'],
+}
+
+module.exports = withMDX(nextConfig)
+```
+
+あとは、シンタックスハイライトを利用したいページのヘッダー内で以下のように CDN を呼び出せばよい。
+
+```html
+<link
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/themes/prism-tomorrow.min.css"
+    rel="stylesheet"
+    crossOrigin="anonyumous"
+/>
+```
+
+### 数式
+
+ブログ記事の中で ${e}^{{i}\theta} = \cos(\theta) + {i}\sin(\theta)$ や、
+
+$$
+{div}{\bm E}({\bm r},t)=\frac{\partial E_{x}({\bm r},t)}{\partial x} +\frac{\partial E_{y}({\bm r},t)}{\partial y} +\frac{\partial E_{z}({\bm r},t)}{\partial z}.
+$$
+
+のように数式を書けるように（$\TeX$ を使えるように）しておく。
+
+手順としては上記のコードシンタックスの導入と似たようなもので、
+
+```bash
+yarn add @mdx-js/loader remark-math rehype-katex
+# あるいは
+# npm install @mdx-js/loader remark-math rehype-katex
+```
+
+としてから、`next.config.js` を以下のように編集する。
+
+```javascript
+// next.config.js
+const remarkMath = require('remark-math')
+const rehypeKatex = require('rehype-katex')
+
+const withMDX = require('@next/mdx')({
+    // ...略
+  options: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex, rehypePrism],
+  },
+})
+```
+
+CDN から呼び出す部分も同様で、HTML ヘッダー内で
+
+```html
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css"
+/>
+```
+
+とすればよい。
+
+### 記事の中でのツイート埋め込み
+
+Twitter の埋め込みリンクをそのまま使えばいいと思ったら、そうすると以下のように引用文として表示されてしまうことが判明。
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">速報　ついに俺がTypeScriptへ入門</p>&mdash; thesugar (@_thesugar_) <a href="https://twitter.com/_thesugar_/status/1247107952005091328?ref_src=twsrc%5Etfw">April 6, 2020</a></blockquote>
+
+いろいろと調べてみたものの、カードとして表示するには`react-twitter-embed` というライブラリを使うのが一番手っ取り早そうだった。
+
+このライブラリを使うと、MDX 内で `import { TwitterTweetEmbed } from "react-twitter-embed"` とインポートしたうえで以下のように書くことでカードのようなリンクとして表示される。
+
+```jsx
+<TwitterTweetEmbed
+  tweetId={'1247107952005091328'}
+/>
+```
+
+<TwitterTweetEmbed
+  tweetId={'1247107952005091328'}
+/>
+
+### ツイートで共有するボタン
+
+これは特別な工夫などもなく、[Twitter 公式](https://publish.twitter.com/#) 通りの手順で以下のようなリンクを設置しているだけ。  
+
+まずはヘッダー内で以下のように `widgets.js` を読み込むように設定している。
+
+```tsx
+<script
+  async
+  src="https://platform.twitter.com/widgets.js"
+  charSet="utf-8"
+  crossOrigin="anonymous"
+></script>
+```
+
+そして、リンクを設置したい箇所で以下のようにリンクを設置している。
+
+以下のコード中の `${meta.title}` などは MDX ファイル（各記事のファイル）からエクスポートされている記事のメタ情報（日付やタイトルなど）。
+
+```tsx
+<a
+  href={`https://twitter.com/intent/tweet?text=${meta.title}｜THESUGAR-ME&url=https://thesugar.me/articles/${meta.id}&hashtags=${meta.tags}`}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Twitter /> {/* <- アイコン */}
+</a>
+```
+
+### はてなブログの共有ボタン
+
+はてなブログの共有ボタンも同様に、[公式のガイド](https://b.hatena.ne.jp/guide/bbutton) に沿ってリンクを設置しただけである。
+
+```tsx
+<a
+  href={`https://b.hatena.ne.jp/entry/s/thesugar.me/articles/${meta.id}`}
+  data-hatena-bookmark-layout="touch-counter"
+  title={meta.title}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Hatena /> {/* <- アイコン */}
+</a>
+<script
+  type="text/javascript"
+  src="https://b.st-hatena.com/js/bookmark_button.js"
+  charSet="utf-8"
+  async={true}
+></script>
+```
+
+### 目次（Table of Content）
+
+PC で見た場合に記事の右側に表示されている目次の表示。
+
+[unifiedでMarkdownをHTMLに変換 & ReactでQiitaっぽい目次を作る](https://takumon.com/2018/10/28/) という記事を見ると [unified.js](https://unifiedjs.com/) という構文解析ライブラリなどを使って目次を作成することができるようだが、いったん自作してみることにした。
+
+といってもかなり素朴な感じの実装で、マークダウンから HTML 化されたコンテンツの中身を読み込み、HTML タグの部分に注目して、`<h2>` や `<h3>` などの見出しタグをそのままリスト形式（`<ul><li>...</li></ul>`）にして目次にしている。  
+そのときに見出しタグの（`h` に続く）数字を見て、数字が大きくなっていればリストにネストを追加するというような処理を行っている。
+
+[実際のコードはこちら](https://github.com/thesugar/thesugar.me/blob/master/components/toc.tsx)。
+
+### 何日前に投稿したかの表示
+
+ブログ記事の日付欄の隣にある `2020-MM-DD hh:mm (3 days ago)` といったような、現時点から見ていつ投稿されたかを相対的に表示する部分。
+
+これは探せば便利なライブラリくらいいくらでもありそうだが、ちょっとした頭の体操も兼ねて自作することにした。
+
+ただしその実装もやはりかなりシンプルで、単に条件分岐を書き連ねただけである。
+
+一点だけ注意が必要なのは、各記事の投稿日付のデータは `2020-01-01 22:55` といったかたちで、特に日付の部分はハイフンつなぎの文字列になっているが、その状態で `new Date("2020-01-01 22:55")` というような処理にしてしまうと、Chrome では正常に表示されるのだが safari では `NaN` になってしまい、「NaN days ago」というような表示になってしまう。
+
+ということで、`postedAtDate.replace(/-/g,"/")` の部分でハイフンをスラッシュに置換して、`new Date("2020/01/01 22:55")` というような処理になるようにしている。
+
+```tsx
+export const relative = (postedAtDate: string): string => {
+  const now = Date.now()
+  const today = new Date()
+
+  const postedAtms = new Date(postedAtDate.replace(/-/g,"/")).getTime()
+  const postedAt = new Date(postedAtDate.replace(/-/g,"/"))
+
+  const delta = now - postedAtms
+  const deltaDays = delta / (1000 * 60 * 60 * 24) // ミリ秒 -> 日数
+
+  return delta < 1000 * 60 * 3
+    ? 'just now'
+    : delta < 1000 * 60 * 60
+    ? Math.floor(delta / (1000 * 60)).toString() + ' minutes ago'
+    : delta < 1000 * 60 * 60 * 24
+    ? Math.floor(delta / (1000 * 60 * 60)) === 1
+      ? '1 hour ago'
+      : Math.floor(delta / (1000 * 60 * 60)).toString() + ' hours ago'
+    : today.getFullYear() !== postedAt.getFullYear()
+    ? today.getFullYear() - postedAt.getFullYear() === 1
+      ? 'last year'
+      : Math.floor(today.getFullYear() - postedAt.getFullYear()).toString() +
+        ' years ago'
+    : today.getMonth() !== postedAt.getMonth()
+    ? today.getMonth() - postedAt.getMonth() === 1
+      ? 'last month'
+      : Math.floor(today.getMonth() - postedAt.getMonth()).toString() +
+        ' months ago'
+    : Math.floor(deltaDays) === 1
+    ? 'yesterday'
+    : Math.floor(deltaDays).toString() + ' days ago'
+}
+```
+
+### カテゴリタグ
+
+各ブログ記事のメタ情報としてタグ情報を付け、それを記事のページ下部に表示し、タグをクリックすると `/tag/タグ名` というページに遷移してそのタグがついた記事の一覧が表示される。
+
+Next.js が提供する動的ルーティング（ダイナミックルーティング）、また、ver 9.3 以降で追加された `getStaticProps`、`getStaticPaths` の典型的なユースケースという感じで、書いていて楽しかった。
+
+[実際のコードはこちら](https://github.com/thesugar/thesugar.me/blob/master/pages/tag/%5Btag%5D.tsx)。
+
+注意点として挙げるとすれば、日本語のタグを処理する場合には URI エンコード・デコードをしないといけないという点くらいで、あとは基本的な処理になる。
+
+### 記事の OGP 生成
+
+Twitter などで記事のリンクを貼ったときに印象的に見えるように、OGP 画像の設定を各記事に行いたい。
+
+一つ一つの記事ごとに凝った画像をデザインするというのも一つの手だが、技術的にははてなブログとか Qiita あるいは dev.to のように記事のタイトルなどから自動的に OGP 画像を生成してみたかった。
+
+実装には [`node-canvas`](https://github.com/Automattic/node-canvas) というライブラリを使用した。
+
+[Canvas API](https://developer.mozilla.org/ja/docs/Web/API/Canvas_API) は HTML5 において `<canvas>` 要素というものを使ってグラフィックを描く方法を提供する Web API。Web API というくらいだから当然クライアントサイドで動くものだが、サーバーサイド（Node.js）でも同じような API を使ってグラフィックを描けるライブラリがこの `node-canvas` である。
+
+この `node-canvas` を使ってグラフィックを描くスクリプトを用意して、そのスクリプトを実行すれば以下のような OGP 画像が生成される。
+
+<img src="/ogp/created-blog.jpg" />
+
+スクリプトとしたからには、`package.json` で `"build": "node scripts/ogpGenerator.js && next build",` というようにしてビルド時に自動的に OGP 画像を生成するようにしたいのだが、Vercel の環境に日本語フォントが入っておらず、生成された画像内の日本語が文字化けしてしまうため、そのようにはせず、開発環境で手動でスクリプトを走らせて画像を生成するという形にした。
+
+### その他
+
+他にも、細かい実装はいちおうあって、例示してみる。
+
+- マークダウン -> HTML にする際の細かい処理
+  - たとえば、各見出しに hover した際にその見出し自身へのリンクを鎖のアイコンとともに表示するなど
+- [記事作成用のスクリプト](https://github.com/thesugar/thesugar.me/blob/master/scripts/makeArticle.js)
+  - 記事のテンプレートを自動的に作成する
+  - 記事のメタ情報（タイトルや日付など）を別ファイル（`/postlist.json`）にまとめて一元化する
+    - `/postlist.json` には全記事のメタ情報が格納されることになる。
+    - OGP 生成の際には、`postlist.json` 内に存在する記事（つまり全記事）の ID と、すでに生成済みの OGP 画像の ID（ファイル名を参照することで得られる）を比較することで、OGP を生成したい記事の ID を明示的に指定せずとも、未生成の OGP 画像だけを生成するようにしている。
+
+#### ドメインについて
+
+ちなみに、thesugar.me というドメイン自体はムームードメインで取得したものだが、ドメインの管理は [Vercel のコマンドラインツール](https://vercel.com/docs/cli#getting-started) が便利。
+特に、サブドメインに Vercel 以外にデプロイしている別のサイトを割り当てたいときはこのコマンドラインツールを使う必要がある（はず）。
+
+例えば、hoge.thesugar.me という URL には、Firebase hosting にデプロイしている別のサイトを割り当てたいときは以下のようにする。
+
+```bash
+# まずは vercel （コマンドラインツール）をインストール
+yarn global add vercel
+
+# 以下は例。Firebase hosting を利用する場合には以下のような雰囲気になるはず。
+vercel dns add thesugar.me hoge A [IP-address-1]
+vercel dns add thesugar.me hoge A [IP-address-2]
+vercel dns add thesugar.me hoge TXT google-site-verification=[key]
+```
+
+## さいごに
+
+技術的な部分については淡々と羅列しただけのような形になったが、以上がこのブログを作ろうと思ったきっかけとこのブログを支える具体的な技術内容である。
+
+説明が不適切な部分やもっと詳しく知りたい部分、実装の不備などがあればぜひご指摘いただきたい。
+
+<hr />
+
+ここまでお読みいただきありがとうございました。今後とも当サイトをよろしくお願いします！
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
