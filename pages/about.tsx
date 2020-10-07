@@ -62,15 +62,13 @@ const About = (): JSX.Element => {
           {
             year: '2016 年 4 月〜',
             content:
-              '三菱 UFJ 銀行に入社。横浜支店で法人営業（融資・外国為替・決済等）を担当。',
-          },
-          {
-            year: '2018 年 10 月〜',
-            content:
-              '以下 3 社 5 部署を兼務。グループベースでの IT 戦略の立案およびAI の技術調査・開発に携わる。<ul><li>三菱 UFJ 銀行　システム企画部 IT 戦略 Gr、デジタル企画部</li><li>三菱 UFJ フィナンシャルグループ（持株会社）　事務・システム企画部、デジタル企画部</li>\
+              '三菱 UFJ 銀行に入社。横浜支店で法人営業（融資・外国為替・決済等）を経験したのち、以下 3 社 5 部署に配属（兼務）。グループベースでの IT 戦略の立案および AI の技術調査・開発、フロントエンド開発等に携わる。<ul><li>三菱 UFJ 銀行　システム企画部 IT 戦略 Gr、デジタル企画部</li><li>三菱 UFJ フィナンシャルグループ（持株会社）　事務・システム企画部、デジタル企画部</li>\
               <li>三菱 UFJ インフォメーションテクノロジー　IT プロデュース部（R&D 部門）</li></ul>',
           },
-          { year: '2020 年 4 月', content: '退職。現在は自宅警備業務を担当。' },
+          {
+            year: '2020 年 4 月〜',
+            content: '退職。現在は自宅警備業務を担当。',
+          },
         ].map((term) => (
           <div key={term.year} className="rowContainer">
             <div className="left">
@@ -105,18 +103,21 @@ const About = (): JSX.Element => {
             >
               DL4US（東京大学 Deep Learning 実践開発講座）
             </a>{' '}
-            第 3 期<Link href="/dl4us_cert.pdf">
-              <a target="_blank">
-                修了
-              </a>
-            </Link>（<strong>総合 2 位</strong>）
+            第 3 期
+            <Link href="/dl4us_cert.pdf">
+              <a target="_blank">修了</a>
+            </Link>
+            （<strong>総合 2 位</strong>）
           </li>
           <li>
             <a href="https://gci.t.u-tokyo.ac.jp/">
               GCI
               データサイエンティスト養成講座（東京大学グローバル消費インテリジェンス寄附講座）
             </a>{' '}
-            第 6 期修了
+            第 6 期
+            <Link href="/gci_cert.pdf">
+              <a target="_blank">修了</a>
+            </Link>
           </li>
           <li>
             <a
@@ -126,17 +127,17 @@ const About = (): JSX.Element => {
             >
               東京大学 実データで学ぶ人工知能講座
             </a>
-            （2019 年度後期）<Link href="/learnai_completion.pdf">
-              <a target="_blank">
-                修了
-              </a>
-            </Link>（<strong>
-            <Link href="/learnai_award.pdf">
-              <a target="_blank">
-                優秀賞
-              </a>
+            （2019 年度後期）
+            <Link href="/learnai_completion.pdf">
+              <a target="_blank">修了</a>
             </Link>
-              </strong>受賞）
+            （
+            <strong>
+              <Link href="/learnai_award.pdf">
+                <a target="_blank">優秀賞</a>
+              </Link>
+            </strong>
+            受賞）
           </li>
         </ul>
 
@@ -153,17 +154,29 @@ const About = (): JSX.Element => {
         <ul>
           <li>応用情報技術者</li>
           <li>
-            <a href="https://coursera.org/share/cfeb78fbbc794a69c73e920178a73584" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://coursera.org/share/cfeb78fbbc794a69c73e920178a73584"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Google Cloud Platform Fundamentals: Core Infrastructure
             </a>
           </li>
           <li>
-            <a href="https://coursera.org/share/40b3f3fe0faf4de66c51da5a22a4f33d" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://coursera.org/share/40b3f3fe0faf4de66c51da5a22a4f33d"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Google Cloud Platform Big Data and Machine Learning Fundamentals
             </a>
           </li>
           <li>
-            <a href="https://google.qwiklabs.com/public_profiles/30375ea9-9070-4975-bf63-6fa0b9621dd3" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://google.qwiklabs.com/public_profiles/30375ea9-9070-4975-bf63-6fa0b9621dd3"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Qwiklabs
             </a>
           </li>
