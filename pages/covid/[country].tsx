@@ -1,4 +1,8 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
+import Head from 'next/head'
+import Link from 'next/link'
+import { siteTitle } from '../../components/sugar.config'
+import THESUGARME from '../../components/ThesugarMe'
 
 type Data = {
   Country: string
@@ -10,42 +14,53 @@ type Data = {
   Date: string
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-
-  const country = context.params?.country
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const country = params?.country
 
   try {
-  const res = await fetch (`https://api.covid19api.com/dayone/country/${country}/status/confirmed/live`)
-  const json : Data[] = await res.json()
+    const res = await fetch(
+      `https://api.covid19api.com/dayone/country/${country}/status/confirmed/live`
+    )
+    const json: Data[] = await res.json()
 
-  if (res.status !== 200) {
-    console.error(json)
-    throw new Error('Failed to fetch API')
-  }
+    if (res.status !== 200) {
+      console.error(json)
+      throw new Error('Failed to fetch API')
+    } else if (res.status === 200) {
+      const resultArray = []
+      for (let element of json) {
+        resultArray.push({ date: element.Date, cases: element.Cases })
+      }
 
-  const result =
-  {
-    country: json[0].Country,
-    data : json.map(element => {date: element.Date
-                                cases: element.Cases
-                              })
-  }
-
-  return {
-    props: {
-      json
-    },
-    revalidate: 30,
-  }
-
-  } catch (e) {
-    console.log("きゃーーーーーーーーーっち")
-    console.log(e)
-    return {
-      props: {
-        json: null
+      return {
+        props: {
+          country: json[0].Country,
+          status: 'ok',
+          result: resultArray,
+        },
+        revalidate: 30,
       }
     }
+  } catch (e) {
+    console.log(e)
+
+    return {
+      props: {
+        country,
+        status: 'fail',
+        result: [],
+      },
+    }
+  }
+
+  // この return を書かないと TypeScript のコンパイラから、返り値の型が GetStaticProps で規定されている型と合わないと怒られる（try catch の影響）
+  // 一方、finally を使ってその中で return をすると正常系でも finally からの返り値が返ってしまう
+  // 結論：以下の return は意味ない（実行されない）がコンパイラのエラーを抑制するためのもの
+  // もしくは、`: GetStaticProps` という型注釈を削除してしまうか
+  return {
+    props: {
+      country: null,
+    },
   }
 }
 
@@ -56,125 +71,48 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const Page = (props: { json : Data[] }) => {
+const Page = (props: {
+  country: string
+  status: 'ok' | 'fail'
+  result: [{ date: string; cases: string }]
+}) => {
   return (
-    <>
-    <h2 className="pageTitle">
-      {props.json && props.json[0].Country} の 感染者推移
-    </h2>
-    {props.json && props.json.map(elm =>
-    <ul key={elm.Date}>
-      <li className="date">{elm.Date.slice(0,10)}</li>
-      <li className="cases">{elm.Cases}</li>
-    </ul>  
-    )}
-    </>
+    <div className="allContainer">
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+      <header className="header">
+        {THESUGARME}
+      </header>
+
+      <main>
+        <h3>{props.country}
+        {props.status === 'ok' && ' の感染者推移'}
+        {props.status === 'fail' && ' のデータは取得できませんでした。'}</h3>
+        <br />
+        {props.status === 'ok' &&
+          props.result.map((element) => (
+            <ul className="oneday-data" key={element.date}>
+              <li>{element.date.slice(0, 10)}</li>
+              <li>{element.cases}</li>
+            </ul>
+          ))}
+      </main>
+      <style jsx>{`
+        main {
+          display: grid;
+          max-width: 50vw;
+          justify-content: center;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+          Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        }
+
+        ul {
+          list-style: none;
+        }
+      `}</style>
+    </div>
   )
 }
 
 export default Page
-
-// import { GetStaticProps, GetStaticPaths } from 'next'
-
-// type Data = {
-//   Country: string
-//   CountryCode: string
-//   Lat: string
-//   Lon: string
-//   Cases: number
-//   Status: string
-//   Date: string
-// }
-
-// export const getStaticProps: GetStaticProps = async (context) => {
-
-//   const country = context.params?.country
-
-//   try {
-//   const res = await fetch (`https://api.covid19api.com/dayone/country/${country}/status/confirmed/live`)
-//   const json : Data[] = await res.json()
-
-//   if (res.status !== 200) {
-//     console.error(json)
-//     throw new Error('Failed to fetch API')
-//   }
-
-//   const resultMap = new Map()
-//   json.map(elm => {
-//     resultMap.set(elm.Date, elm.Cases)
-//   })
-
-//   const result =
-//   {
-//     country: json[0].Country,
-//     status: 'ok',
-//     data : JSON.parse(JSON.stringify(resultMap)),
-//   }
-
-//   return {
-//     props: {
-//       result
-//     },
-//     revalidate: 30,
-//   }
-
-//   } catch (e) {
-//     console.log(e)
-//     const result = {
-//       country,
-//       status: 'fail',
-//       data : {
-//         date: null,
-//         cases: null
-//       }
-//     }
-//     return {
-//       props: {
-//         result
-//       }
-//     }
-//   }
-// }
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   return {
-//     paths: [{ params: { country: 'japan' } }], // ['/covid/japan'] としてもいい。
-//     fallback: true,
-//   }
-// }
-
-// type Result = {
-//   country: string
-//   status: 'ok' | 'fail'
-//   data: Map<string, number>
-// }
-
-// const Page = (result : Result) => {
-
-//   console.log(result)
-
-//   const correct =
-//     <h2 className="pageTitle">
-//     {result.country } の 感染者推移
-//     </h2>
-    
-//     {result.data && result.data.forEach((value, key) =>
-//     <ul key={key}>
-//     <li className="date">{key}</li>
-//     <li className="cases">{value}</li>
-//     </ul>
-//     )}
-
-//   const error = 
-//       <h2>
-//         {result.country} のデータは見つけられませんでした。
-//       </h2>
-
-//     return (
-//       <>
-//       {result.status === 'ok' ? correct : error}
-//       </>
-//     )
-// }
-
-// export default Page
