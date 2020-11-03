@@ -3,6 +3,8 @@ import Head from 'next/head'
 import { siteTitle } from '../../components/sugar.config'
 import THESUGARME from '../../components/ThesugarMe'
 import { Line } from 'react-chartjs-2'
+import { data, chartOption } from '../../components/covid/chart'
+import { CovidFooter } from '../../components/covid/covidfooter'
 
 type Data = {
   Country: string
@@ -22,7 +24,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       `https://api.covid19api.com/dayone/country/${country}/status/confirmed/live`
     )
     const json: Data[] = await res.json()
-    const now = new Date().toLocaleTimeString()
+    const date = new Date()
+    const now = date.toLocaleDateString() + ' ' + date.toLocaleTimeString()
 
     if (res.status !== 200) {
       console.error(json)
@@ -73,66 +76,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const data = (country: string, date: string[], cases: number[]) => {
-  return {
-    labels: date,
-    datasets: [
-      {
-        type: 'line',
-        label: country,
-        fill: true,
-        lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderCapStyle: 'round',
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'square',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#eee',
-        pointBorderWidth: 1,
-        pointHoverRadius: 8,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
-        pointHoverBorderWidth: 1,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: cases,
-      },
-    ],
-  }
-}
-
-const chartOption = (country: string) => {
-  return {
-    title: {
-      display: true,
-      text: country,
-    },
-    tooltips: {
-      mode: 'label',
-    },
-    responsive: false,
-    maintainAspectRatio: false,
-    scales: {
-      xAxes: [
-        {
-          stacked: true,
-        },
-      ],
-      yAxes: [
-        {
-          stacked: true,
-          scaleLabel: {
-            display: true,
-            labelString: '人',
-          },
-        },
-      ],
-    },
-  }
-}
-
 const Page = (props: {
   country: string
   status: 'ok' | 'fail'
@@ -147,6 +90,11 @@ const Page = (props: {
       <header className="header">{THESUGARME}</header>
 
       <main>
+
+        <div className="explanation">
+          このページではインクリメンタル静的再生成を使用しています。
+        </div>
+
         <h3>
           {props.country}
           {props.status === 'ok' && ' の感染者推移'}
@@ -171,6 +119,11 @@ const Page = (props: {
         {props.now}
         </small>
       </main>
+
+      <footer>
+      <CovidFooter />
+      </footer>
+
       <style jsx>{`
         main {
           display: grid;
@@ -179,6 +132,11 @@ const Page = (props: {
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
+        }
+
+        .explanation {
+          padding: 10px;
+          background-color: #FFF6E4;
         }
 
         ul {
@@ -190,3 +148,10 @@ const Page = (props: {
 }
 
 export default Page
+
+// メモ
+// ssg -> 最終更新時刻の更新 + 新しい地域を表示したときにインクリメンタルに生成される
+//        isFallback の検証もしたい。
+//        あとは一覧ページのようなものと、記事を書く。
+// ssr -> covid/covid19_ssr を表示するとサーバー側でログが出る
+// swr -> csr
