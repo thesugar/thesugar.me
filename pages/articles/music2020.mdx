@@ -1,0 +1,342 @@
+import Layout from '../../components/Layout'
+import Link from 'next/link'
+import Image from 'next/image'
+import { TwitterTweetEmbed } from 'react-twitter-embed'
+
+export const meta = {
+	id: 'music2020',
+	title: '2020年の年間ベストアルバム50',
+	date: '2020-12-30 21:09',
+	tags: ['音楽']
+}
+
+## はじめに
+
+今年リリースされたアルバムのうち、よく聴いたもの、良かったものをまとめました。いちおう順位を付けていますが、たとえば明確な評価軸にしたがって採点しただとかそういうわけではないので、いくつ作品を挙げたかわかりやすくする程度の便宜的なものです。ただし、そうは言っても、上位にランク付けしているものは今回挙げた 50 作品の中でもひときわ好きレベルが高いアルバムたちです。
+
+コメントも全曲につけたかったのですが、ふだん、感性でなんとなく好きだなと思って聴いている作品の良さを言語化するという作業が大変すぎて途中でギブアップしました。
+
+今年は、言うまでもなく新型コロナウィルスの影響で、私たち聴き手の音楽への向き合い方が変化した（自宅にいる時間が増えて音楽をじっくり聴けるようになったとか、あるいは今まで通勤途中に音楽を聴いていたから逆に音楽を聴く時間が減ったとか）のと同時に、当然ながら作り手に対しても大きな影響があったということが、作品からも垣間見れます。たとえば、自宅スタジオでホームレコーディングをした作品や、SNS でファンと交流する中で生まれたという作品などです。また、歌詞に目を向けても、内向的に自分の生活を省みる曲や、逆にポジティブに聴き手を導こうとする曲など、やはり新型コロナウィルスやそれに伴うロックダウン生活の影響などが感じ取れます。
+
+さらに、今年の音楽を語るうえでは Black Lives Matter 運動の影響も避けて通ることはできないでしょう。もちろん、黒人差別へのプロテスト（抗議）は昔から R&B やヒップホップなどを中心として歌われてきたわけですが、今年の作品では特に BLM 的なメッセージや怒りを感じさせる作品が多かったような気がします。
+
+まずアルバムタイトルの一覧を示し、その後でそれぞれに対するレビューも添えます（上位 25 曲までですが）。
+
+## アルバムタイトル一覧
+
+<ol>
+<li>KiCk i / Arca</li>
+<li>Untitled (Black Is) / SAULT</li>
+<li>Magic Oneohtrix Point Never / Oneohtrix Point Never</li>
+<li>古風 / 冥丁</li>
+<li>Punisher / Phoebe Bridgers</li>
+<li>color theory / Soccer Mommy</li>
+<li>Avalanches / We Will Always Love You</li>
+<li>After Hours / The Weeknd</li>
+<li>BLQLYTE / zeroh</li>
+<li>NEGRO / Pink Siifu</li>
+<li>3.15.20 / Childish Gambino</li>
+<li>It Is What It Is / Thundercat</li>
+<li>Song For Our Daughter / Laura Marling</li>
+<li>Fetch the Bolt Cutters / Fiona Apple</li>
+<li>Invisible People / Chicano Batman</li>
+<li>how i'm feeling now / Charli XCX</li>
+<li>KOHH / worst</li>
+<li>Evermore / Taylor Swift</li>
+<li>Bob Dylan / Rough And Rowdy Ways</li>
+<li>The Slow Rush / Tame Impala</li>
+<li>Eternal Atake / Lil Uzi Vert</li>
+<li>Fake It Flowers / beabadoobee</li>
+<li>夢太郎 / NENE</li>
+<li>GOA / ゆるふわギャング</li>
+<li>Saint Cloud / Waxahatchee</li>
+<li>Heaven To A Tortured Mind / Yves Tumor</li>
+<li>Oh My Beloved / Purnamasi Yogamaya</li>
+<li>Octógono / Rodrigo Carazo</li>
+<li>DRM / Sam Gendel</li>
+<li>Conflict / John Carroll Kirby</li>
+<li>Agora / Bebel Gilberto</li>
+<li>Big Conspiracy / J Hus</li>
+<li>The Time It Takes / Goldmund</li>
+<li>Brightest Blue / Ellie Goulding</li>
+<li>Top / YoungBoy Never Broke Again</li>
+<li>Lianne La Havas / Lianne La Havas</li>
+<li>Notes On A Conditional Form / The 1975</li>
+<li>The New Abnormal / The Strokes</li>
+<li>Petals For Armor / Hayley Williams</li>
+<li>no song without you / HONNE</li>
+<li>Shore / Fleet Foxes</li>
+<li>The Main Thing / Real Estate</li>
+<li>sawayama / rina sawayama</li>
+<li>Run The Jewels / RTJ4 </li>
+<li>Future Nostalgia / Dua Lipa</li>
+<li>Sixteen Oceans / Four Tet</li>
+<li>Positions / Ariana Grande</li>
+<li>Chromatica / Lady Gaga</li>
+<li>I'm Gone / Iann Dior</li>
+<li>King's Desease / NAS</li>
+<style jsx>{`
+		font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    	Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+		font-size: 0.8rem;
+		background-color: #fff6e4;
+		max-width: 400px;
+	`}</style>
+</ol>
+
+## レビュー
+
+1. KiCk i / Arca
+	<Image src='/music2020/kick_i.jpg' width={300} height={300}/>
+
+	今年一番聴いたアルバムだと思う。Arca らしく、エクスペリメンタルでインダストリアルでエレクトロニックでありながらポップな仕上がり。
+
+	2018 年にノンバイナリーであるとカミングアウトした彼女（性自認はノンバイナリーながらアイデンティティはトランス女性としている）は、その音楽においても既存の枠組みに収まらず、ジャンルで語ることは相応しくないとさえ感じる。
+
+	#2 Time、#5 Calor がお気に入り。
+	<hr />
+
+1. Untitled (Black Is) / SAULT
+	<Image src='/music2020/black_is.jpg' width={300} height={300} />
+	
+	R&B〜ファンクの思わず体が動いてしまうような素晴らしい音楽。今年出たもう 1 つのアルバム Untitled (Rise) も良かった。
+	
+	アルバムのタイトル “Black Is” からも察されるとおり、Black Lives Matter 運動の中でつくられた作品。
+	
+	アルバムタイトルと同タイトルの #8 Black Is では「Black is sweet, Black is ours, Black is love, Black is God, God is us」と歌わ（語ら）れる。ほかにも、パトカーのサイレン音がサンプリングされた音の上で「Don't Shoot, guns down. Don't shoot, I'm innocent. Don't shoot, Racist policeman」と淡々と歌う #4 Don't Shoot Guns Down、「I'm black, black, black」と繰り返す #12 Black や「We will rise」と締め括られる #18 Miracles（そして次のアルバムのタイトルが Rise である） など、きわめてシンプルながら強いメッセージを発する歌詞にも注目せざるを得ない。
+	<hr />
+
+1. Magic Oneohtrix Point Never / Oneohtrix Point Never
+	<Image src='/music2020/mopn.jpg' width={300} height={300}/>
+
+	OPN の最新作。アルバム全体を通じて OPN らしさが全開であまりにも最高な作品になっている。エクスペリメンタルでありながら、それでいて調和が取れていて、聴いていて本当に気持ちが良い。
+	
+	The Weeknd が参加している #8 No Nightmares や Arca が参加している #15 Shifting もかっこいい。5 年前、恵比寿リキッドルームに OPN を見に行ったのが懐かしい……。また生でこの音楽を聴きたい！
+	<hr />
+
+1. 古風 / 冥丁
+	<Image src='/music2020/kofu.jpg' width={300} height={300}/>
+
+	広島のアーティスト「冥丁」による 3 作目のアルバム。LOST JAPANESE MOOD（失われた日本のムード）をテーマとしているらしく、作品全体を通じてまさにアルバムタイトル通りの古風な和の雰囲気が漂う。
+	
+	しかしながら、随所に織り込まれた民謡や声のサンプリングやヒップホップ的なリズム、それに留まらずアンビエントやエレクトロニック、エクスペリメンタルな要素まで含んでいて、聴いていて驚きの連続。「古くて新しい」という言葉では言い表されない、古来から伝わる和の音色と最先端の音楽の邂逅。
+	<hr />
+
+1. Punisher / Phoebe Bridgers
+	<Image src='/music2020/punisher.jpg' width={300} height={300}/>
+
+	ポップでロックでドリーミーで最高。アルバムタイトルと同じタイトルの #4 Punisher は美しさが際立っていてお気に入り。#3 Kyoto はアルバムの中でも異色と言えるほどポップでアッパーな仕上がりになっていて歌詞も「京都最高！」的な感じかと思いきや冒頭から「オフだから京都に来た　お寺は飽きちゃった　セブンイレブンをブラブラ見てまわる　ここにはまだ公衆電話なんてあるんだ」と予想外の dis で始まるが、その後「弟の誕生日には電話してくれたんだってね、10 日ほどずれてたけど　でも努力は認めてあげる　トラックの修理中、私たちに運転させてくれたことを思い出す」と、異国（京都）の風景描写から、自分の幼い頃の回想を含めた叙情的な描写へとなめらかに展開する詩は見事としか言えない。
+	
+	The Smiths や The Cure のように暗い歌詞を明るく歌うバンドが好きだとインタビュー（[このインタビュー](https://www.neol.jp/music-2/99721/)や[こちらのインタビュー](http://monchicon.jugem.jp/?eid=2310)）で答えているが、それも納得。
+	<hr />
+
+1. color theory / Soccer Mommy
+	<Image src='/music2020/color_theory.jpg' width={300} height={300}/>
+
+	美しいメロディと声でずっと聴き続けていられる。90 年代のオルタナやインディー・ポップへのノスタルジーがベースにあるとのこと。個人的には、#2 circle the drain なんかは、キュアー（キュアーは 90 年代を代表するバンドではないが）らしさを強く感じた。
+	
+	一方で、美しいサウンドに対して歌詞は重いものも多い。#6 yellow is the color of her eyes では「The bright August sun feels like yellow / And the white of her eyes is so yellow」と、黄色が太陽の象徴であると同時に her（ここでは母親）の目の色、すなわち母親の病気の象徴にもなっている。また、「I'm still so blue / I can't erase the hue, it's just colored over」とも歌われており、blue（憂鬱な気持ち、ブルーな気持ち）の色を消すことができないという。その後も、「海の向こうから彼女（母親）のことを考えている、彼女の顔は波にのまれ、体は海に浮かんでいるよう」、「太陽の光は白昼夢でしかない」という詩が続き、黄色＝太陽と青＝海が対比的に描かれている。また、アルバムのジャケットは青白く、一方でこの曲の MV は全体的に太陽の黄色がかっている。このように、アルバムタイトル「color theory」のとおり、色彩が表現として効果的に使われている（ちなみに、アルバムの最後の曲は「gray light」という曲で締められている）。
+	<hr />
+
+1. Avalanches / We Will Always Love You
+	<Image src='/music2020/wewillalwaysloveyou.jpg' width={300} height={300}/>
+
+	Avalanches の 3rd フルアルバム。前作 Wildflower も最高で繰り返し聴いたが、今回はよりポップに仕上がっている印象。
+	
+	#4 The Divine Chord は MGMT と（私が大好きな The Smiths のギタリストだった）ジョニー・マーが参加している。ほかにも、#22 Running Red Lights ではウィーザーのボーカル Rivers Cuomo が参加しているなど、豪華な作品。
+	<hr />
+
+1. After Hours / The Weeknd
+	<Image src='/music2020/after_hours.jpg' width={300} height={300}/>
+
+	世界中で大ヒットしたアルバムだが、まさに世界が認めるとおり文句なしで素晴らしいアルバム。#3 Hardest To Love はキャッチーでポップなのに飽きがこず、抗しがたい引力を持った曲。1 つのアルバムの中にアンビエントから R&B、ニューウェーブ（たとえば #9 Blinding Lights なんかはデペッシュ・モードを彷彿とさせる）等々の香りが詰め込まれていて味わい深い。
+	<hr />
+
+1. BLQLYTE / zeroh
+	<Image src='/music2020/blqlyte.jpg' width={300} height={300}/>
+
+	トラックメーカー兼ラッパーである zeroh の新作。もうラッパーとかヒップホップと分類していいのかなぁと思うくらい、エクスペリメンタルでハードコアな音楽。めちゃくちゃかっこいい。
+	<hr />
+
+1. NEGRO / Pink Siifu
+	<Image src='/music2020/negro.jpg' width={300} height={300}/>
+
+	凄いの一言に尽きる。こちらも、（Pink Siifu はラッパーという扱いながら）ラップやヒップホップの枠に収まりきらず、ノイズ、ハードコア、エクスペリメンタルの要素を含んだ作品。BLM 運動と軌を一にした、怒りとレジスタンスの熱気が一貫している。
+	<hr />
+
+1. 3.15.20 / Childish Gambino
+	<Image src='/music2020/3_15_20.jpg' width={300} height={300}/>
+
+	真っ白いアルバムジャケットに「19.10」、「24.19」などタイムスタンプをそのまま曲名にした楽曲たち……でなんとも意味のわかりづらいアルバムではある。#7 24.19 の途中では心臓を思わせるドラムの音と激しい呼吸音が現れたり、#8 35.51 の終盤ではそこまでの曲たちが逆再生されたり、謎の多さは曲自体もそうである。そういうことで、文章にしようとすると困ってしまうが、ただ聴いているぶんにはこの実験的な感じが最高だと思えて、3 月のリリース以来繰り返し聴いたアルバムの 1 つである。
+	
+	なお、いろいろと謎が多いとは言ったが、アリアナ・グランデが参加した #3 Time や、#10 42.26 では世界に人口が増えすぎてしまったことによる気候変動などの諸問題を訴えており、明確なメッセージ性を持った作品でもある。
+	<hr />
+
+1. It Is What It Is / Thundercat
+	<Image src='/music2020/itiswhatitis.jpg' width={300} height={300}/>
+
+	ジャジーでグルービーなのはもちろん、ヒップホップの要素もあり、R&B、ファンク、ポップなどなど、ジャンルの垣根を超えた様々な音が見事にまとまって最高の音楽を響かせている。
+	
+	Thundercat と Flying Lotus との共同プロデュースらしいと聴いて納得した。どうりでこんなにかっこいいわけだ……。
+	<hr />
+
+1. Song For Our Daughter / Laura Marling
+	<Image src='/music2020/song_for_our_daughter.jpg' width={300} height={300}/>
+	
+	本当に声が良すぎる。強く歌っているわけではないんだけども力強く響く声、歌っているのにまるで語り掛けられているような声、本当に最高。ローラ・マーリングは 2015 年の Short Movies というアルバムでハマって、その後もいろんな女性 SSW を聴いたけれども彼女の声は唯一無二だしいつ聴いても沁みる。
+	<hr />
+
+1. Fetch the Bolt Cutters / Fiona Apple
+	<Image src='/music2020/Fetch_the_Bolt_Cutters.png' width={300} height={300}/>
+
+	かっこよすぎて度肝を抜かれた。予想できない曲構成、渋みのあるボーカル、時に不気味に、時に楽しげに響くピアノ、すべてがものすごい。
+	<hr />
+
+1. Invisible People / Chicano Batman
+	<Image src='/music2020/invisible_people.jpg' width={300} height={300}/>
+
+	ラテンでソウルでファンクなチカーノ・サイケバンドの新作。Alabama Shakes や The War on Drugs の作品を手掛けた Shawn Everett がエンジニアとして携わったとのことでその完成度は保証されたようなものだが、その期待に違わず、聴いていて最高に気持ちいい作品に仕上がっている。
+	<hr />
+
+1. how i'm feeling now / Charli XCX
+	<Image src='/music2020/how_im_feeling_now.jpg' width={300} height={300}/>
+
+	COVID 19 のロックダウン期間に作られたというアルバム。ロックダウン生活にうんざりした気持ちがアルバムタイトルの「how i'm feeling now」どおり等身大に描かれている。
+	
+	#1 pink diamonds から曲も歌詞もいきなり激しくて最高。#10 Anthems では、夜更かしして起きてシリアル食べてテレビを見てオンラインショッピングをして……、という「本当に退屈（I'm so bored）」な生活が歌われるが、その最後に「when it's over, we might be even closer（これが終わったら、もっと近くにいられるかも）」と締め括られるのがエモーショナルで最高。
+	<hr />
+
+1. KOHH / worst
+	<Image src='/music2020/worst.jpg' width={300} height={300}/>
+
+	KOHH のラストアルバム。はじめの頃、恋愛や地元の生活など身の回りのことを歌っていた KOHH は、キャリアを進めラッパーとして確固たる地位を築いてゆくにつれて厭世感を打ち出したリリックが多くなっていったが、本作では一周回って身近なことを歌った曲が目立つ印象。KOHH 特有の、考えていることを取り止めもなくトラックに乗せて歌ったような、ただ、それだからこそダイレクトに響くリリックは今作でも全開。
+	
+	スクリレックスが参加している #2 Sappy は EDM 色も強い。 昔「貧乏なんて気にしない」「地位名誉金欲しいよ」とラップしていた KOHH が「超お金持ち　高級車　でかい家　何がほしいんだろう」とアコースティックギターに乗せて歌う #13 What I Want? から、これまたかつて「I wanna be a superstar」と歌っていた KOHH が「知らない有名人よりいつもの仲間達　まず地元に一軒家欲しい　クラブで酒よりあの子んちで見る DVD」と歌う #14 They Call Me Super Star、そして最後、実名（千葉雄喜）で祖母への手紙を朗読する #15 手紙の流れはまさにラストアルバムとして完成された作品だと思う。
+	<hr />
+
+1. Evermore / Taylor Swift
+	<Image src='/music2020/evermore.png' width={300} height={300}/>
+
+	12 月にサプライズでリリースされたアルバム。今年 7 月に発売された前作 Folklore の雰囲気をそのままに、さらに Taylor Swift らしいアコースティックなインディーフォークに仕上がっている。Twitter では、「曲を書くことがやめられなかった。Folklore の森を引き返すか先に進むかという選択で、さらに深くへ進むことにした」と書いていたがまさにそのとおりなのだろう。
+	<hr />
+
+1. Bob Dylan / Rough And Rowdy Ways
+	<Image src='/music2020/roughandrowdyways.jpg' width={300} height={300}/>
+
+	ボブディランの 8 年ぶりの新作。特に 17 分もある「Murder Most Foul（最も卑劣な殺人）」はかなりの力作になっている。J. F. ケネディの暗殺を主題として、当時のアーティストやヒット曲、映画、芝居など様々な固有名詞が散りばめられた超大作の叙事詩となっている。アメリカの現状とも重ね合わせながら聴こうとするが、曲も歌詞もまだ正直しっかりと味わい理解することができた気はしない。だが、この曲のリリース時にボブ・ディランが Twitter でファンに向けて贈った言葉が沁みる。“Stay safe, stay observant and may God be with you.”（どうかご無事で、お気をつけて、神とともにあらんことを）
+	<hr />
+
+1. The Slow Rush / Tame Impala
+	<Image src='/music2020/the_slow_rush.jpg' width={300} height={300}/>
+
+	待ちわびていた 5 年ぶりの新作。よりダンサブルでポップな仕上がりになっているが、サイケの香りもしっかり残っていて、期待を裏切らない完成度。
+	<hr />
+
+1. Eternal Atake / Lil Uzi Vert
+	<Image src='/music2020/Eternal_Atake.jpg' width={300} height={300}/>
+
+	Lil Uzi Vert、引退するとか言ってなかったっけ？　いや、2017 年に出た前作 Luv Is Rage 2 がかなり好きだったので、引退せずに新作を出してくれて嬉しかった。Lil Uzi Vert の勢いがあってメロディアスなラップは健在で、めちゃくちゃかっこいい。今年出た、Future との共作『Pluto x Baby Pluto』もかなり良かった（それを言うならば、これまた今年出た Future の『High Off Life』も Drake や Travis Scott などヒップホップシーンを代表するメンバーとの共作もあり、すごく良かったのだけど）。
+	<hr />
+
+1. Fake It Flowers / beabadoobee
+	<Image src='/music2020/fakeItFlowers.jpg' width={300} height={300}/>
+	
+	20 歳の新人シンガーソングライターのビーバドゥービーのファーストフル。スマパンやマイブラ、ソニック・ユースなどに影響を受けたそうだが、確かに 90 年代オルタナを感じさせるサウンド。
+	<hr />
+
+1. 夢太郎 / NENE
+	<Image src='/music2020/yumetaro.jpg' width={300} height={300}/>
+
+	ゆるふわギャングの NENE のソロ EP。#3 慈愛 は、ふだんアグレッシブなリリックが多い NENE が自分の弱さと向き合った曲で新鮮。MV のつくりもそうなのだが、自身の二面性をテーマにしているそう。ただし「求めてごめんね yes か no / 今はわからないよ high か low」と、明確に二分できるものでなく、自分の立ち位置に戸惑う姿が歌われる。#4 名器は Awich との共作で二人の持ち味が存分に発揮されている。
+	<hr />
+
+1. GOA / ゆるふわギャング
+	<Image src='/music2020/goa.jpg' width={300} height={300}/>
+
+	もうゆるふわギャングはヒップホップの枠には収まりきらなくなってしまった。インドのゴアでの滞在中にインスピレーションを受けたという本作はトランス、サイケ、テクノ的な仕上がりになっており、聴いているだけでトリップできる。
+	<hr />
+
+1. Saint Cloud / Waxahatchee
+	<Image src='/music2020/saint_cloud.jpg' width={300} height={300}/>
+	
+	どこか懐かしいような雰囲気。カントリーでアメリカーナでフォーク。聴き心地がいい作品。
+	<hr />
+
+1. Heaven To A Tortured Mind / Yves Tumor
+	<Image src='/music2020/heaven.jpg' width={300} height={300}/><br />
+	
+1. Oh My Beloved / Purnamasi Yogamaya
+	<Image src='/music2020/ohmybeloved.jpg' width={300} height={300}/><br />
+
+1. Octógono / Rodrigo Carazo
+	<Image src='/music2020/octogono.jpg' width={300} height={300}/><br />
+
+1. DRM / Sam Gendel
+	<Image src='/music2020/drm.jpg' width={300} height={300}/><br />
+
+1. Conflict / John Carroll Kirby
+	<Image src='/music2020/conflict.jpeg' width={300} height={300}/><br />
+
+1. Agora / Bebel Gilberto
+	<Image src='/music2020/agora.jpg' width={300} height={300}/><br />
+
+1. Big Conspiracy / J Hus
+	<Image src='/music2020/bigconspiracy.jpg' width={300} height={300}/><br />
+
+1. The Time It Takes / Goldmund
+	<Image src='/music2020/thetimeittakes.jpg' width={300} height={300}/><br />
+
+1. Brightest Blue / Ellie Goulding
+	<Image src='/music2020/brightest_blue.png' width={300} height={300}/><br />
+
+1. Top / YoungBoy Never Broke Again
+	<Image src='/music2020/youngboy.jpg' width={300} height={300}/><br />
+
+1. Lianne La Havas / Lianne La Havas
+	<Image src='/music2020/lianne.jpg' width={300} height={300}/><br />
+
+1. Notes On A Conditional Form / The 1975
+	<Image src='/music2020/Notes_On_A_Conditional_Form.jpg' width={300} height={300}/><br />
+
+1. The New Abnormal / The Strokes
+	<Image src='/music2020/the_new_abnormal.jpg' width={300} height={300}/><br />
+
+1. Petals For Armor / Hayley Williams
+	<Image src='/music2020/petals_for_armor.jpg' width={300} height={300}/><br />
+
+1. no song without you / HONNE
+	<Image src='/music2020/no_song_without_you.jpg' width={300} height={300}/><br />
+
+1. Shore / Fleet Foxes
+	<Image src='/music2020/shore.jpg' width={300} height={300}/><br />
+
+1. The Main Thing / Real Estate
+	<Image src='/music2020/the_main_thing.jpg' width={300} height={300}/><br />
+
+1. sawayama / rina sawayama
+	<Image src='/music2020/sawayama.jpg' width={300} height={300}/><br />
+
+1. Run The Jewels / RTJ4 
+	<Image src='/music2020/rtj4.jpg' width={300} height={300}/><br />
+
+1. Future Nostalgia / Dua Lipa
+	<Image src='/music2020/future_nostalgia.jpg' width={300} height={300}/><br />
+
+1. Sixteen Oceans / Four Tet
+	<Image src='/music2020/sixteen_oceans.jpg' width={300} height={300}/><br />
+
+1. Positions / Ariana Grande
+	<Image src='/music2020/positions.jpg' width={300} height={300}/><br />
+
+1. Chromatica / Lady Gaga
+	<Image src='/music2020/chromatica.jpg' width={300} height={300}/><br />
+
+1. I'm Gone / Iann Dior
+	<Image src='/music2020/im_gone.jpg' width={300} height={300}/><br />
+
+1. King's Desease / NAS
+	<Image src='/music2020/kings_desease.jpg' width={300} height={300}/><br />
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>	
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
