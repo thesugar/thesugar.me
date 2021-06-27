@@ -7,18 +7,41 @@ export const siteOgDescription = 'TheSugar.Me 🤓'
 
 const greet = (
   <>
-    東大工学部卒 → 三菱 UFJ フィナンシャルグループの R&D 部門にて機械学習エンジニア。その後退職し、現在は無職。
-    <br />
-    機械学習や Web
-    フロントエンド、モバイルアプリ、純粋関数型言語などに興味があります。
+    東大工学部卒 → 三菱 UFJ フィナンシャルグループの R&D
+    部門にて機械学習エンジニア → フリーランス Web エンジニア。Web
+    フロントエンドや機械学習、関数型プログラミングなどが好きです。
   </>
 )
 
 export const PRIVACY_POLICY_STATE = (
   <>
-  当サイトでは Google アナリティクスを利用しており、データの収集のために Cookie を使用しています。<br />このデータは匿名で収集されており、個人を特定するものではありません。
-      <br /><br />この機能は Cookie を無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。
-      <br />この規約に関しての詳細は<a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank" rel="noopener noreferrer"> Google アナリティクスサービス利用規約のページ</a>や <a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener noreferrer">Google ポリシーと規約ページ</a>をご覧ください。
+    当サイトでは Google アナリティクスを利用しており、データの収集のために
+    Cookie を使用しています。
+    <br />
+    このデータは匿名で収集されており、個人を特定するものではありません。
+    <br />
+    <br />
+    この機能は Cookie
+    を無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。
+    <br />
+    この規約に関しての詳細は
+    <a
+      href="https://marketingplatform.google.com/about/analytics/terms/jp/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {' '}
+      Google アナリティクスサービス利用規約のページ
+    </a>
+    や{' '}
+    <a
+      href="https://policies.google.com/technologies/ads?hl=ja"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Google ポリシーと規約ページ
+    </a>
+    をご覧ください。
   </>
 )
 

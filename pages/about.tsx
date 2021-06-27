@@ -67,7 +67,13 @@ const About = (): JSX.Element => {
           },
           {
             year: '2020 年 4 月〜',
-            content: '退職。現在は自宅警備業務を担当。',
+            content:
+              'フリーランス Web エンジニアとして、法人向け業務ツールの開発に参画（使用技術：TypeScript, React）',
+          },
+          {
+            year: '2021 年 3 月〜',
+            content:
+              'フリーランス Web エンジニアとして、個人・法人向けデザインシステム作成支援アプリケーションの開発に参画（使用技術：TypeScript, React, Redux, express）',
           },
         ].map((term) => (
           <div key={term.year} className="rowContainer">
@@ -83,11 +89,18 @@ const About = (): JSX.Element => {
 
         <h2>Web Front-end</h2>
         <ul>
-          <li>HTML / CSS</li>
-          <li>JavaScript</li>
           <li>TypeScript</li>
-          <li>React</li>
           <li>Next.js</li>
+          <li>React</li>
+          <li>Redux</li>
+        </ul>
+
+        <h2>Web Back-end</h2>
+        <ul>
+          <li>express</li>
+          <li>Fasitfy</li>
+          <li>Prisma</li>
+          <li>Sequelize</li>
         </ul>
 
         <h2>Machine Learning / Data Science</h2>
@@ -143,8 +156,8 @@ const About = (): JSX.Element => {
 
         <h2>Others</h2>
         <ul>
-          <li>Swift</li>
           <li>Haskell / Functional Programming</li>
+          <li>Swift</li>
           <li>Docker / Kubernetes</li>
           <li>GCP</li>
           <li>Firebase, Firestore</li>
@@ -152,6 +165,14 @@ const About = (): JSX.Element => {
 
         <h2>Certification</h2>
         <ul>
+          <li>
+            <Link href="/cma.pdf">
+              <a target="_blank">
+                日本証券アナリスト協会 認定アナリスト（CMA）
+              </a>
+            </Link>
+          </li>
+          <li>TOEIC 915 点（2021 年 5月）</li>
           <li>応用情報技術者</li>
           <li>
             <a
