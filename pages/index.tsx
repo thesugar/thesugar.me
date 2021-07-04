@@ -11,12 +11,17 @@ import {
 import { importAll } from '../components/importAll'
 import THESUGARME from '../components/ThesugarMe'
 import Foot from '../components/Foot'
+import { getOuterPost } from '../lib/outer-post'
 
 const blogItems = importAll(
   require.context(__dirname + '/articles', true, /\.mdx$/)
 )
+const outerPosts = getOuterPost()
 
-const defaultItems = blogItems.slice(0, 5)
+const posts = [...blogItems, ...outerPosts]
+posts.sort((a, b) => {
+  return a.date > b.date ? -1 : 1
+})
 
 const Home = (): JSX.Element => {
   const [readMore, setReadMore] = useState(false)
@@ -50,33 +55,25 @@ const Home = (): JSX.Element => {
 
       <section>
         <h1 className="writing">Writings</h1>
-        {defaultItems.map((item) => {
-          const articlePath = '/articles' + item.name.slice(1)
+        {posts.slice(0, readMore ? posts.length : 5).map((item) => {
+          const articlePath =
+            'name' in item ? '/articles' + item.name.slice(1) : item.url
           return (
             <div key={item.title} className="wrapper">
               <div className="postTitle">
                 <Link href={articlePath}>
-                  <a>{item.title}</a>
+                  <a
+                    target={'url' in item ? '_blank' : ''}
+                    rel={'url' in item ? 'noopener noreferrer' : ''}
+                  >
+                    {item.title}
+                  </a>
                 </Link>
               </div>
               <div className="postDate">{item.date.slice(0, 10)}</div>
             </div>
           )
         })}
-        {readMore &&
-          blogItems.slice(5).map((item) => {
-            const articlePath = '/articles' + item.name.slice(1)
-            return (
-              <div key={item.title} className="wrapper">
-                <div className="postTitle">
-                  <Link href={articlePath}>
-                    <a>{item.title}</a>
-                  </Link>
-                </div>
-                <div className="postDate">{item.date.slice(0, 10)}</div>
-              </div>
-            )
-          })}
         <style jsx>{`
           .wrapper {
             padding-top: 0.8rem;
@@ -125,7 +122,7 @@ const Home = (): JSX.Element => {
         `}</style>
       </section>
 
-      {!readMore && blogItems.length > 5 && (
+      {!readMore && posts.length > 5 && (
         <a className="readMore" onClick={() => setReadMore(!readMore)}>
           ...Read more
           <style jsx>{`
