@@ -50,7 +50,7 @@ const About = (): JSX.Element => {
         <p>
           {' '}
           Ryohei Sato / @thesugar <br />
-          1992 年生まれ。東京在住。
+          1992 年生まれ。現在はフリーランスの Web エンジニアとして活動中。
         </p>
 
         <h2>Career</h2>
@@ -172,7 +172,7 @@ const About = (): JSX.Element => {
               </a>
             </Link>
           </li>
-          <li>TOEIC 915 点（2021 年 5月）</li>
+          <li>TOEIC 985 点（2021 年 9 月）</li>
           <li>応用情報技術者</li>
           <li>
             <a
