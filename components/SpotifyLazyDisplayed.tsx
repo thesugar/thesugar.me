@@ -8,6 +8,12 @@ type Props = {
 const SpotifyLazyDisplayed = ({ src, lag }: Props): JSX.Element => {
   const [show, setShow] = useState<boolean>(false)
   useEffect(() => {
+    if (window) {
+      window.alert = () => {}
+    }
+  }, [])
+
+  useEffect(() => {
     setTimeout(() => {
       setShow(true)
     }, lag)
